@@ -64,4 +64,3 @@ texture = ExtResource("1_kq51n")
 libraries = {
 "": SubResource("AnimationLibrary_nk0hh")
 }
-autoplay = "open"

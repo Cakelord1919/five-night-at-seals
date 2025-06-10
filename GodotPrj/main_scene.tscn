@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://be086chawq71y"]
+[gd_scene load_steps=7 format=3 uid="uid://be086chawq71y"]
 
 [ext_resource type="Script" path="res://Scripts/script_director.gd" id="1_lbqi4"]
 [ext_resource type="PackedScene" uid="uid://g6giobgh8kf0" path="res://Scenes/monitor_room.tscn" id="2_jy40n"]
 [ext_resource type="Texture2D" uid="uid://mp2j5ttwui4s" path="res://Res/icon.svg" id="3_a7lak"]
+[ext_resource type="Texture2D" uid="uid://dfwtayyxulwab" path="res://Res/SecurityRoomInitial-Ver4-2025-6-8.png" id="3_w0no4"]
 [ext_resource type="PackedScene" uid="uid://bxrefevm8rxk5" path="res://Scenes/monitor_pad.tscn" id="4_256ke"]
 [ext_resource type="PackedScene" uid="uid://cm3v0xrcshhnm" path="res://Scenes/map_panel.tscn" id="5_oaxwj"]
 
@@ -15,6 +16,9 @@ ocgMonAnim = NodePath("../monitorPad/AnimationPlayer")
 ocgMapAnim = NodePath("../mapPanel/mapAnimation")
 
 [node name="monitorRoom" parent="." instance=ExtResource("2_jy40n")]
+position = Vector2(570, 144)
+scale = Vector2(0.911163, 0.906332)
+texture = ExtResource("3_w0no4")
 
 [node name="turnLeftButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.117647)
@@ -59,11 +63,11 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="monitorPad" parent="." instance=ExtResource("4_256ke")]
+position = Vector2(568, 146.993)
+scale = Vector2(0.913066, 0.773185)
 
 [node name="mapPanel" parent="." instance=ExtResource("5_oaxwj")]
-
-[node name="mapAnimation" parent="mapPanel" index="0"]
-autoplay = ""
+visible = false
 
 [connection signal="button_down" from="turnLeftButton" to="scriptDirector" method="onLeftPressed"]
 [connection signal="button_up" from="turnLeftButton" to="scriptDirector" method="onLeftReleased"]
@@ -74,5 +78,6 @@ autoplay = ""
 [connection signal="animation_finished" from="monitorPad/AnimationPlayer" to="scriptDirector" method="monAnimFin"]
 [connection signal="animation_finished" from="mapPanel/mapAnimation" to="scriptDirector" method="mapAnimFin"]
 
+[editable path="monitorRoom"]
 [editable path="monitorPad"]
 [editable path="mapPanel"]

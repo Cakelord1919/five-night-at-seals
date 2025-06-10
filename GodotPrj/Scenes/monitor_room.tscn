@@ -7,3 +7,5 @@ z_index = -1
 position = Vector2(590, 394)
 scale = Vector2(1.36164, 0.844928)
 texture = ExtResource("1_1h7jn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
