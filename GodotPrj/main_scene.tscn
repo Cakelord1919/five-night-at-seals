@@ -66,6 +66,9 @@ expand_icon = true
 position = Vector2(568, 146.993)
 scale = Vector2(0.913066, 0.773185)
 
+[node name="AnimationPlayer" parent="monitorPad" index="0"]
+speed_scale = 2.0
+
 [node name="mapPanel" parent="." instance=ExtResource("5_oaxwj")]
 visible = false
 

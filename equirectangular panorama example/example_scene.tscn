@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://tgw7ajvfcoyv"]
+
+[ext_resource type="Texture2D" uid="uid://c53u7arxoj08s" path="res://SecurityRoomInitial-Ver4-2025-6-8.png" id="1_vank5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wjnxm"]
+panorama = ExtResource("1_vank5")
+
+[sub_resource type="Sky" id="Sky_pq1oe"]
+sky_material = SubResource("PanoramaSkyMaterial_wjnxm")
+
+[sub_resource type="Environment" id="Environment_l40eb"]
+background_mode = 2
+sky = SubResource("Sky_pq1oe")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l40eb")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

@@ -1,0 +1,5 @@
+res://main_scene.tscn
+res://Scenes/monitor_pad.tscn
+res://Scenes/monitor_room.tscn
+res://Scenes/map_panel.tscn
+res://equirec.gdshader
