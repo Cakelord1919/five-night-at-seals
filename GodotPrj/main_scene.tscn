@@ -1,86 +1,62 @@
-[gd_scene load_steps=7 format=3 uid="uid://be086chawq71y"]
+[gd_scene load_steps=6 format=3 uid="uid://tgw7ajvfcoyv"]
 
-[ext_resource type="Script" path="res://Scripts/script_director.gd" id="1_lbqi4"]
-[ext_resource type="PackedScene" uid="uid://g6giobgh8kf0" path="res://Scenes/monitor_room.tscn" id="2_jy40n"]
-[ext_resource type="Texture2D" uid="uid://mp2j5ttwui4s" path="res://Res/icon.svg" id="3_a7lak"]
-[ext_resource type="Texture2D" uid="uid://dfwtayyxulwab" path="res://Res/SecurityRoomInitial-Ver4-2025-6-8.png" id="3_w0no4"]
-[ext_resource type="PackedScene" uid="uid://bxrefevm8rxk5" path="res://Scenes/monitor_pad.tscn" id="4_256ke"]
-[ext_resource type="PackedScene" uid="uid://cm3v0xrcshhnm" path="res://Scenes/map_panel.tscn" id="5_oaxwj"]
+[ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_n0ddm"]
+[ext_resource type="Script" path="res://Script/script_director.gd" id="2_dc0yv"]
+[ext_resource type="Texture2D" uid="uid://bmko54ctpj8vj" path="res://Texture/SecurityRoomInitial-Ver5-2025-6-10.png" id="3_ss6h0"]
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(1, 3)
+[sub_resource type="SphereMesh" id="SphereMesh_l2j4c"]
+flip_faces = true
 
-[node name="scriptDirector" type="Node2D" parent="." node_paths=PackedStringArray("ocgMonAnim", "ocgMapAnim")]
-script = ExtResource("1_lbqi4")
-ocgMonAnim = NodePath("../monitorPad/AnimationPlayer")
-ocgMapAnim = NodePath("../mapPanel/mapAnimation")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqtl0"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_ss6h0")
 
-[node name="monitorRoom" parent="." instance=ExtResource("2_jy40n")]
-position = Vector2(570, 144)
-scale = Vector2(0.911163, 0.906332)
-texture = ExtResource("3_w0no4")
+[node name="Node3D" type="Node3D"]
 
-[node name="turnLeftButton" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0.117647)
-offset_left = 1013.0
-offset_top = -4.0
-offset_right = 1149.0
-offset_bottom = 644.0
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="btnLeft" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0.0784314)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 111.0
+offset_bottom = 645.0
+toggle_mode = true
 action_mode = 0
-keep_pressed_outside = true
-icon = ExtResource("3_a7lak")
-
-[node name="turnRightButton" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0.117647)
-offset_right = 136.0
-offset_bottom = 646.0
-action_mode = 0
-keep_pressed_outside = true
-icon = ExtResource("3_a7lak")
-
-[node name="openMonitorButton" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0.117647)
-z_index = 2
-offset_left = 155.0
-offset_top = 583.0
-offset_right = 529.0
-offset_bottom = 642.0
-action_mode = 0
-icon = ExtResource("3_a7lak")
-icon_alignment = 1
+icon = ExtResource("1_n0ddm")
 expand_icon = true
 
-[node name="openMapButton" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0.117647)
-z_index = 2
-offset_left = 614.0
-offset_top = 583.0
-offset_right = 988.0
+[node name="btnRight" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0.0784314)
+layout_mode = 0
+offset_left = 1042.0
+offset_top = -2.0
+offset_right = 1151.0
 offset_bottom = 642.0
+toggle_mode = true
 action_mode = 0
-icon = ExtResource("3_a7lak")
-icon_alignment = 1
+icon = ExtResource("1_n0ddm")
 expand_icon = true
 
-[node name="monitorPad" parent="." instance=ExtResource("4_256ke")]
-position = Vector2(568, 146.993)
-scale = Vector2(0.913066, 0.773185)
+[node name="scriptDirector" type="Node2D" parent="Control"]
+script = ExtResource("2_dc0yv")
 
-[node name="AnimationPlayer" parent="monitorPad" index="0"]
-speed_scale = 2.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
+mesh = SubResource("SphereMesh_l2j4c")
+skeleton = NodePath("../Camera3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_mqtl0")
 
-[node name="mapPanel" parent="." instance=ExtResource("5_oaxwj")]
-visible = false
-
-[connection signal="button_down" from="turnLeftButton" to="scriptDirector" method="onLeftPressed"]
-[connection signal="button_up" from="turnLeftButton" to="scriptDirector" method="onLeftReleased"]
-[connection signal="button_down" from="turnRightButton" to="scriptDirector" method="onRightPressed"]
-[connection signal="button_up" from="turnRightButton" to="scriptDirector" method="onRightReleased"]
-[connection signal="pressed" from="openMonitorButton" to="scriptDirector" method="onOpenMonitorPressed"]
-[connection signal="pressed" from="openMapButton" to="scriptDirector" method="onOpenMapPressed"]
-[connection signal="animation_finished" from="monitorPad/AnimationPlayer" to="scriptDirector" method="monAnimFin"]
-[connection signal="animation_finished" from="mapPanel/mapAnimation" to="scriptDirector" method="mapAnimFin"]
-
-[editable path="monitorRoom"]
-[editable path="monitorPad"]
-[editable path="mapPanel"]
+[connection signal="button_down" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftPressed"]
+[connection signal="button_up" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftRel"]
+[connection signal="button_down" from="Control/btnRight" to="Control/scriptDirector" method="onBtnRightPressed"]
+[connection signal="button_up" from="Control/btnRight" to="Control/scriptDirector" method="onBtnRightRel"]
