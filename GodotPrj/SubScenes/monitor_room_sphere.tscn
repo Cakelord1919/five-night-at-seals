@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf5777qxo87lq"]
+[gd_scene load_steps=6 format=3 uid="uid://cf5777qxo87lq"]
 
 [ext_resource type="Texture2D" uid="uid://bmko54ctpj8vj" path="res://Texture/SecurityRoomInitial-Ver5-2025-6-10.png" id="1_85cif"]
 
@@ -10,8 +10,33 @@ transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("1_85cif")
 
+[sub_resource type="Animation" id="Animation_0qwm1"]
+resource_name = "forward"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lsodl"]
+_data = {
+"forward": SubResource("Animation_0qwm1")
+}
+
 [node name="MeshInstance3D" type="MeshInstance3D"]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
 mesh = SubResource("SphereMesh_l2j4c")
 skeleton = NodePath("../Camera3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_mqtl0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lsodl")
+}
