@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_n0ddm"]
 [ext_resource type="Script" path="res://Script/script_director.gd" id="2_dc0yv"]
-[ext_resource type="Texture2D" uid="uid://kh8sdvw6g5ke" path="res://Texture/SecurityRoomInitial-Ver7-2025-6-11.png" id="3_b7sgp"]
+[ext_resource type="Texture2D" uid="uid://cel7rmgbt2gmm" path="res://Texture/SecurityRoomInitial-Ver8-2025-6-12.png" id="3_jrcbp"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_l2j4c"]
 flip_faces = true
@@ -10,7 +10,8 @@ flip_faces = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqtl0"]
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource("3_b7sgp")
+albedo_texture = ExtResource("3_jrcbp")
+uv1_scale = Vector3(-1, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 
