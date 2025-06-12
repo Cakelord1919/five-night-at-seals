@@ -1,17 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://tgw7ajvfcoyv"]
+[gd_scene load_steps=4 format=3 uid="uid://tgw7ajvfcoyv"]
 
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_n0ddm"]
 [ext_resource type="Script" path="res://Script/script_director.gd" id="2_dc0yv"]
-[ext_resource type="Texture2D" uid="uid://dc1f3hlqlehgy" path="res://Texture/SecurityRoomInitial-Ver9-2025-6-12.png" id="3_3ho7k"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_l2j4c"]
-flip_faces = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqtl0"]
-transparency = 1
-shading_mode = 0
-albedo_texture = ExtResource("3_3ho7k")
-uv1_scale = Vector3(-1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://cf5777qxo87lq" path="res://SubScenes/monitor_room_sphere.tscn" id="3_h8xch"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -48,16 +39,41 @@ action_mode = 0
 icon = ExtResource("1_n0ddm")
 expand_icon = true
 
-[node name="scriptDirector" type="Node2D" parent="Control"]
+[node name="scriptDirector" type="Node2D" parent="Control" node_paths=PackedStringArray("okgComAnim")]
 script = ExtResource("2_dc0yv")
+okgComAnim = NodePath("../../MeshInstance3D/AnimationPlayer")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="openMapBtn" type="Button" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0.0784314)
+layout_mode = 0
+offset_left = 145.0
+offset_top = 581.0
+offset_right = 553.0
+offset_bottom = 645.0
+icon = ExtResource("1_n0ddm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="checkComBtn" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0.0784314)
+layout_mode = 0
+offset_left = 603.0
+offset_top = 579.0
+offset_right = 1011.0
+offset_bottom = 643.0
+icon = ExtResource("1_n0ddm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("3_h8xch")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
-mesh = SubResource("SphereMesh_l2j4c")
-skeleton = NodePath("../Camera3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_mqtl0")
 
 [connection signal="button_down" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftPressed"]
-[connection signal="button_up" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftRel"]
+[connection signal="button_up" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftRelease"]
 [connection signal="button_down" from="Control/btnRight" to="Control/scriptDirector" method="onBtnRightPressed"]
-[connection signal="button_up" from="Control/btnRight" to="Control/scriptDirector" method="onBtnRightRel"]
+[connection signal="button_up" from="Control/btnRight" to="Control/scriptDirector" method="onBtnRightRelease"]
+[connection signal="button_down" from="Control/checkComBtn" to="Control/scriptDirector" method="onCheckComPressed"]
+[connection signal="animation_finished" from="MeshInstance3D/AnimationPlayer" to="Control/scriptDirector" method="monAnimFin"]
+
+[editable path="MeshInstance3D"]

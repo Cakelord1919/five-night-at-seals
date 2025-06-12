@@ -1,6 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf5777qxo87lq"]
+[gd_scene load_steps=19 format=3 uid="uid://cf5777qxo87lq"]
 
-[ext_resource type="Texture2D" uid="uid://bmko54ctpj8vj" path="res://Texture/SecurityRoomInitial-Ver5-2025-6-10.png" id="1_85cif"]
+[ext_resource type="Texture2D" uid="uid://dc1f3hlqlehgy" path="res://Texture/SecurityRoomInitial-Ver9-2025-6-12.png" id="1_4mamg"]
+[ext_resource type="Texture2D" uid="uid://xpepgjcgrmth" path="res://Texture/ComputerSequence/001.png" id="2_xagdq"]
+[ext_resource type="Texture2D" uid="uid://x0d441251teu" path="res://Texture/ComputerSequence/002.png" id="3_naxye"]
+[ext_resource type="Texture2D" uid="uid://bfyurhodbqw7x" path="res://Texture/ComputerSequence/003.png" id="4_6x7q0"]
+[ext_resource type="Texture2D" uid="uid://j7d32ynd1cnk" path="res://Texture/ComputerSequence/004.png" id="5_dvdlp"]
+[ext_resource type="Texture2D" uid="uid://g5sgtuf4tl51" path="res://Texture/ComputerSequence/005.png" id="6_47vxn"]
+[ext_resource type="Texture2D" uid="uid://drewafeij4f2c" path="res://Texture/ComputerSequence/006.png" id="7_g6aj8"]
+[ext_resource type="Texture2D" uid="uid://df44cud0mmsnx" path="res://Texture/ComputerSequence/007.png" id="8_s3eqo"]
+[ext_resource type="Texture2D" uid="uid://bgl6mtlssu2ak" path="res://Texture/ComputerSequence/008.png" id="9_wm35a"]
+[ext_resource type="Texture2D" uid="uid://5x1hqcifvtem" path="res://Texture/ComputerSequence/009.png" id="10_wbkwp"]
+[ext_resource type="Texture2D" uid="uid://iwks55ia4poy" path="res://Texture/ComputerSequence/010.png" id="11_vhx5n"]
+[ext_resource type="Texture2D" uid="uid://dbkoj74yebf8f" path="res://Texture/ComputerSequence/011.png" id="12_ngte5"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_l2j4c"]
 flip_faces = true
@@ -8,35 +19,68 @@ flip_faces = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqtl0"]
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource("1_85cif")
+albedo_texture = ExtResource("1_4mamg")
+uv1_scale = Vector3(-1, 1, 1)
 
-[sub_resource type="Animation" id="Animation_0qwm1"]
+[sub_resource type="Animation" id="Animation_tigbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_4mamg")]
+}
+
+[sub_resource type="Animation" id="Animation_6myaw"]
+resource_name = "back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_ngte5"), ExtResource("11_vhx5n"), ExtResource("10_wbkwp"), ExtResource("9_wm35a"), ExtResource("8_s3eqo"), ExtResource("7_g6aj8"), ExtResource("6_47vxn"), ExtResource("5_dvdlp"), ExtResource("4_6x7q0"), ExtResource("3_naxye"), ExtResource("1_4mamg")]
+}
+
+[sub_resource type="Animation" id="Animation_lj4gy"]
 resource_name = "forward"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:surface_material_override/0")
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": []
+"values": [ExtResource("2_xagdq"), ExtResource("3_naxye"), ExtResource("4_6x7q0"), ExtResource("5_dvdlp"), ExtResource("6_47vxn"), ExtResource("7_g6aj8"), ExtResource("8_s3eqo"), ExtResource("9_wm35a"), ExtResource("10_wbkwp"), ExtResource("11_vhx5n"), ExtResource("12_ngte5")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lsodl"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qk8d"]
 _data = {
-"forward": SubResource("Animation_0qwm1")
+"RESET": SubResource("Animation_tigbg"),
+"back": SubResource("Animation_6myaw"),
+"forward": SubResource("Animation_lj4gy")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D"]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0.0841296, 0.0332266, 0.0113066)
 mesh = SubResource("SphereMesh_l2j4c")
-skeleton = NodePath("../Camera3D")
+skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_mqtl0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_lsodl")
+"": SubResource("AnimationLibrary_1qk8d")
 }
