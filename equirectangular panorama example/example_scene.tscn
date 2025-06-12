@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://tgw7ajvfcoyv"]
+[gd_scene load_steps=6 format=3 uid="uid://tgw7ajvfcoyv"]
 
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://icon.svg" id="2_5dxaq"]
 [ext_resource type="Texture2D" uid="uid://bmko54ctpj8vj" path="res://SecurityRoomInitial-Ver5-2025-6-10.png" id="2_hv373"]
@@ -8,12 +8,15 @@ flip_faces = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqtl0"]
 transparency = 1
+shading_mode = 0
 albedo_texture = ExtResource("2_hv373")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mhx2a"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-0.990268, 0, 0.139173, 0, 1, 0, -0.139173, 0, -0.990268, 0, 0, 0)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -22,7 +25,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Control"]
-position = Vector2(148, 141)
+position = Vector2(67, 60)
 texture = ExtResource("2_5dxaq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -30,3 +33,7 @@ transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 
 mesh = SubResource("SphereMesh_l2j4c")
 skeleton = NodePath("../Camera3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_mqtl0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0.457425, -0.0596203, 0.154752)
+mesh = SubResource("BoxMesh_mhx2a")

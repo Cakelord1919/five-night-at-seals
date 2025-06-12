@@ -5,7 +5,7 @@ extends Node2D
 var gwRotationTimes = 0
 var gwRotationArrow = 0
 
-const ROTATION_OFFSET = 12
+const ROTATION_OFFSET = 17
 const ROTATION_SPEED = 0.03
 
 # Called when the node enters the scene tree for the first time.
