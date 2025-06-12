@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1749716229
-main_scene.tscn::PackedScene::1347367229756953789::1749702987::0::1::::<><>::uid://diqacbgbwhjv8::::res://Res/icon.svg<>res://Script/script_director.gd<>uid://kh8sdvw6g5ke::::res://Texture/SecurityRoomInitial-Ver7-2025-6-11.png
+::res://::1749721025
+main_scene.tscn::PackedScene::1347367229756953789::1749717258::0::1::::<><>::uid://diqacbgbwhjv8::::res://Res/icon.svg<>res://Script/script_director.gd<>uid://cel7rmgbt2gmm::::res://Texture/SecurityRoomInitial-Ver8-2025-6-12.png
 README.md::TextFile::-1::1749585312::0::1::::<><>::
 ::res://Res/::1749699574
 icon.svg::CompressedTexture2D::7753806477703626183::1749405847::1749699574::1::::<><>::
@@ -11,14 +11,14 @@ script_director.gd::GDScript::-1::1749701716::0::1::::<>Node2D<>::
 example_scene.gdshader::Shader::-1::1749698347::0::1::::<><>::
 ::res://SubScenes/::1749698347
 monitor_room_sphere.tscn::PackedScene::5187718713900773966::1749698347::0::1::::<><>::uid://bmko54ctpj8vj::::res://Texture/SecurityRoomInitial-Ver5-2025-6-10.png
-::res://Texture/::1749716315
+::res://Texture/::1749721031
 actual map.png::CompressedTexture2D::7026761986527840130::1749698348::1749699572::1::::<><>::
 SecurityRoomInitial-Ver4-2025-6-8.png::CompressedTexture2D::6937580766226915616::1749698347::1749699593::1::::<><>::
 SecurityRoomInitial-Ver5-2025-6-10.png::CompressedTexture2D::3250235723756438511::1749698348::1749699578::1::::<><>::
 SecurityRoomInitial-Ver6-2025-6-11.png::CompressedTexture2D::2869481189200581359::1749701280::1749701354::1::::<><>::
 SecurityRoomInitial-Ver7-2025-6-11.png::CompressedTexture2D::718375076762543472::1749702931::1749702965::1::::<><>::
 SecurityRoomInitial-Ver8-2025-6-12.png::CompressedTexture2D::5078278839118821860::1749716315::1749716401::1::::<><>::
-SecurityRoomInitial-Ver9-2025-6-12.png::CompressedTexture2D::3523806663769056507::1749716315::1749716359::1::::<><>::
+SecurityRoomInitial-Ver9-2025-6-12.png::CompressedTexture2D::7353667532552223120::1749721031::1749721093::1::::<><>::
 SecurityRoomInitialComputerToMapSequence-Ver4-2025-6-90015.png::CompressedTexture2D::9077828575431251189::1749698348::1749699592::1::::<><>::
 ::res://Texture/ComputerSequence/::1749699577
 001.png::CompressedTexture2D::2286352250949919822::1749698347::1749699577::1::::<><>::
