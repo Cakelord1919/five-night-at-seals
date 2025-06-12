@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgl6mtlssu2ak"
-path.s3tc="res://.godot/imported/008.png-e3a61adf5adccd88b5983ea2a5f88013.s3tc.ctex"
+path.bptc="res://.godot/imported/008.png-e3a61adf5adccd88b5983ea2a5f88013.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,12 +12,12 @@ metadata={
 [deps]
 
 source_file="res://Texture/ComputerSequence/008.png"
-dest_files=["res://.godot/imported/008.png-e3a61adf5adccd88b5983ea2a5f88013.s3tc.ctex"]
+dest_files=["res://.godot/imported/008.png-e3a61adf5adccd88b5983ea2a5f88013.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
