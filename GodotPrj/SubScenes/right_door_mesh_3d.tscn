@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://4u57eo1c00vb"]
+
+[ext_resource type="Texture2D" uid="uid://4g0l04vfsjrq" path="res://Texture/DoorsSequence/010.png" id="1_f444c"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t4tah"]
+flip_faces = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w46wb"]
+render_priority = -1
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_f444c")
+
+[node name="RightDoorMesh3D" type="MeshInstance3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("SphereMesh_t4tah")
+surface_material_override/0 = SubResource("StandardMaterial3D_w46wb")

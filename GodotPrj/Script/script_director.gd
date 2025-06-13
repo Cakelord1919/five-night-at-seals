@@ -32,8 +32,8 @@ var gbCheckCom = 0
 var gfCameraDefaultAng = 0
 var gbResetCam = 0
 
-const ROTATION_OFFSET = 17
-const ROTATION_SPEED = 0.03
+const ROTATION_OFFSET = 15
+const ROTATION_SPEED = 0.05
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -110,6 +110,7 @@ func enableAllBtns():
 	pass
 
 func cameraReset():
+	disableAllBtns()
 	if gwRotationTimes < 0:
 		gwRotationTimes += 1
 		moveCameraAngle(ROTATION_SPEED)
@@ -120,22 +121,23 @@ func cameraReset():
 		pass
 	if gwRotationTimes == 0:
 		gbResetCam = 0
+		processingComputerAnim()
 		pass
 
 func onCheckComPressed():
 	gbCheckCom = !gbCheckCom
 	gbResetCam = 1
-	processingComputerAnim()
+	#processingComputerAnim()
 	pass
 
 func processingComputerAnim():
 	if gbCheckCom:
-		disableAllBtns()
+		#disableAllBtns()
 		ogTurnLeftBtn.visible = false
 		ogTurnRightBtn.visible = false
 		okgComAnim.play("forward")
 	else:
-		disableAllBtns()
+		#disableAllBtns()
 		okgComAnim.play("back")
 	pass
 
