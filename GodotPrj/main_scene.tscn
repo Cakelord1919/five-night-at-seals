@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://tgw7ajvfcoyv"]
+[gd_scene load_steps=7 format=3 uid="uid://tgw7ajvfcoyv"]
 
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_n0ddm"]
 [ext_resource type="Script" path="res://Script/script_director.gd" id="2_dc0yv"]
 [ext_resource type="PackedScene" uid="uid://cf5777qxo87lq" path="res://SubScenes/monitor_room_sphere.tscn" id="3_h8xch"]
 [ext_resource type="PackedScene" uid="uid://4u57eo1c00vb" path="res://SubScenes/right_door_mesh_3d.tscn" id="4_0myca"]
 [ext_resource type="PackedScene" uid="uid://ded8n66u2cy3k" path="res://SubScenes/left_door_mesh_3d.tscn" id="5_1ad7k"]
+[ext_resource type="PackedScene" uid="uid://cdlfwhbihaocp" path="res://SubScenes/doors_btn_left.tscn" id="6_ciqqw"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -75,6 +76,8 @@ transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 
 [node name="RightDoorMesh3D" parent="." instance=ExtResource("4_0myca")]
 
 [node name="LeftDoorMesh3D" parent="." instance=ExtResource("5_1ad7k")]
+
+[node name="DoorsBtnLeft" parent="." instance=ExtResource("6_ciqqw")]
 
 [connection signal="button_down" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftPressed"]
 [connection signal="button_up" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftRelease"]
