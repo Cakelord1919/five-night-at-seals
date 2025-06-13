@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://cdlfwhbihaocp"]
+[gd_scene load_steps=7 format=3 uid="uid://cdlfwhbihaocp"]
+
+[ext_resource type="PackedScene" uid="uid://beu6xphvkw87f" path="res://SubScenes/doors_btn_left_2d_subview.tscn" id="1_jpngi"]
+[ext_resource type="Script" path="res://Script/doors_btn.gd" id="1_ux05m"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dqrt3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_aly2l"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hvur"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_aly2l")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_axjot"]
+size = Vector3(1, 1, 0.127537)
 
 [node name="DoorsBtnLeft" type="Node3D"]
+script = ExtResource("1_ux05m")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+render_target_update_mode = 4
+
+[node name="Control" parent="SubViewport" instance=ExtResource("1_jpngi")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_dqrt3")
+surface_material_override/0 = SubResource("StandardMaterial3D_1hvur")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0113596)
+shape = SubResource("BoxShape3D_axjot")
