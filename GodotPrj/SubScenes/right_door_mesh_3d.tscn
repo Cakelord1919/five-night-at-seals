@@ -1,6 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://4u57eo1c00vb"]
+[gd_scene load_steps=17 format=3 uid="uid://4u57eo1c00vb"]
 
 [ext_resource type="Texture2D" uid="uid://4g0l04vfsjrq" path="res://Texture/DoorsSequence/010.png" id="1_f444c"]
+[ext_resource type="Texture2D" uid="uid://8einclge513k" path="res://Texture/DoorsSequence/009.png" id="2_1p2e6"]
+[ext_resource type="Texture2D" uid="uid://biwe2m5ch441t" path="res://Texture/DoorsSequence/008.png" id="3_f8mel"]
+[ext_resource type="Texture2D" uid="uid://bgwvydhueqwtu" path="res://Texture/DoorsSequence/007.png" id="4_3bc2l"]
+[ext_resource type="Texture2D" uid="uid://g6jbnocf0l75" path="res://Texture/DoorsSequence/006.png" id="5_7iypd"]
+[ext_resource type="Texture2D" uid="uid://b4rwk1yjweo28" path="res://Texture/DoorsSequence/005.png" id="6_p5wr0"]
+[ext_resource type="Texture2D" uid="uid://cysdvr2rhsexn" path="res://Texture/DoorsSequence/004.png" id="7_i0pdu"]
+[ext_resource type="Texture2D" uid="uid://cjso8tc5vuhf2" path="res://Texture/DoorsSequence/003.png" id="8_x67kk"]
+[ext_resource type="Texture2D" uid="uid://camg4nmltrg7f" path="res://Texture/DoorsSequence/001.png" id="9_37krb"]
+[ext_resource type="Texture2D" uid="uid://pxl7i4ctb0i7" path="res://Texture/DoorsSequence/002.png" id="10_bygte"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_t4tah"]
 flip_faces = true
@@ -9,9 +18,69 @@ flip_faces = true
 render_priority = -1
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource("1_f444c")
+albedo_texture = ExtResource("9_37krb")
+
+[sub_resource type="Animation" id="Animation_agoj6"]
+resource_name = "lift"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_f444c"), ExtResource("2_1p2e6"), ExtResource("3_f8mel"), ExtResource("4_3bc2l"), ExtResource("4_3bc2l"), ExtResource("5_7iypd"), ExtResource("6_p5wr0"), ExtResource("7_i0pdu"), ExtResource("8_x67kk"), ExtResource("9_37krb")]
+}
+
+[sub_resource type="Animation" id="Animation_sbigs"]
+resource_name = "down"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("9_37krb"), ExtResource("10_bygte"), ExtResource("8_x67kk"), ExtResource("7_i0pdu"), ExtResource("6_p5wr0"), ExtResource("5_7iypd"), ExtResource("4_3bc2l"), ExtResource("3_f8mel"), ExtResource("3_f8mel"), ExtResource("1_f444c")]
+}
+
+[sub_resource type="Animation" id="Animation_vl3ud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_37krb")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qd8c"]
+_data = {
+"RESET": SubResource("Animation_vl3ud"),
+"down": SubResource("Animation_sbigs"),
+"lift": SubResource("Animation_agoj6")
+}
 
 [node name="RightDoorMesh3D" type="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("SphereMesh_t4tah")
 surface_material_override/0 = SubResource("StandardMaterial3D_w46wb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1qd8c")
+}
+speed_scale = 2.0

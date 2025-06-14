@@ -1,0 +1,4 @@
+[gd_resource type="ViewportTexture" format=3 uid="uid://bot4gxca28sii"]
+
+[resource]
+viewport_path = NodePath("DoorsBtnLeft/SubViewport")

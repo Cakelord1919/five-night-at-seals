@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://tgw7ajvfcoyv"]
+[gd_scene load_steps=12 format=3 uid="uid://tgw7ajvfcoyv"]
 
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_n0ddm"]
 [ext_resource type="Script" path="res://Script/script_director.gd" id="2_dc0yv"]
@@ -7,6 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://ded8n66u2cy3k" path="res://SubScenes/left_door_mesh_3d.tscn" id="5_1ad7k"]
 [ext_resource type="PackedScene" uid="uid://cdlfwhbihaocp" path="res://SubScenes/doors_btn_left.tscn" id="6_ciqqw"]
 [ext_resource type="PackedScene" uid="uid://ctxtj223xy3tv" path="res://SubScenes/doors_btn_right.tscn" id="7_coa4x"]
+[ext_resource type="Texture2D" uid="uid://bot4gxca28sii" path="res://Res/door_left_btn_viewport.tres" id="7_ymmkv"]
+[ext_resource type="Texture2D" uid="uid://b01ywywh6j14k" path="res://Res/door_right_btn_viewport.tres" id="9_ywmyp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0gsn"]
+resource_local_to_scene = true
+render_priority = 2
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("7_ymmkv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4lsu"]
+resource_local_to_scene = true
+render_priority = 2
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("9_ywmyp")
 
 [node name="Node3D" type="Node3D"]
 
@@ -44,9 +60,13 @@ action_mode = 0
 icon = ExtResource("1_n0ddm")
 expand_icon = true
 
-[node name="scriptDirector" type="Node2D" parent="Control" node_paths=PackedStringArray("okgComAnim")]
+[node name="scriptDirector" type="Node2D" parent="Control" node_paths=PackedStringArray("ogDoorBtnLeft3D", "ogDoorBtnRight3D", "okgComAnim", "ogDoorLeftAnim", "ogDoorRightAnim")]
 script = ExtResource("2_dc0yv")
+ogDoorBtnLeft3D = NodePath("../../DoorsBtnLeft/SubViewport/Control/Button")
+ogDoorBtnRight3D = NodePath("../../DooesBtnRight/SubViewport/Control/Button")
 okgComAnim = NodePath("../../MeshInstance3D/AnimationPlayer")
+ogDoorLeftAnim = NodePath("../../LeftDoorMesh3D/AnimationPlayer")
+ogDoorRightAnim = NodePath("../../RightDoorMesh3D/AnimationPlayer")
 
 [node name="openMapBtn" type="Button" parent="Control"]
 visible = false
@@ -81,14 +101,30 @@ transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 
 [node name="DoorsBtnLeft" parent="." instance=ExtResource("6_ciqqw")]
 transform = Transform3D(-0.00610816, 0, -0.0596883, 0, 0.06, 0, 0.0596883, 0, -0.00610816, 0.461465, -0.0322044, 0.149109)
 
+[node name="MeshInstance3D" parent="DoorsBtnLeft" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_w0gsn")
+
 [node name="DooesBtnRight" parent="." instance=ExtResource("7_coa4x")]
 transform = Transform3D(-0.01728, -0.00596737, 0.0571471, -0.000879003, 0.059696, 0.00596773, -0.0574511, 0.000881503, -0.0172799, -0.463591, -0.0335252, 0.157371)
 
-[connection signal="button_down" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftPressed"]
-[connection signal="button_up" from="Control/btnLeft" to="Control/scriptDirector" method="onBtnLeftRelease"]
-[connection signal="button_down" from="Control/btnRight" to="Control/scriptDirector" method="onBtnRightPressed"]
-[connection signal="button_up" from="Control/btnRight" to="Control/scriptDirector" method="onBtnRightRelease"]
-[connection signal="button_down" from="Control/checkComBtn" to="Control/scriptDirector" method="onCheckComPressed"]
-[connection signal="animation_finished" from="MeshInstance3D/AnimationPlayer" to="Control/scriptDirector" method="monAnimFin"]
+[node name="MeshInstance3D" parent="DooesBtnRight" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_f4lsu")
+
+[connection signal="button_down" from="Control/btnLeft" to="Control/scriptDirector" method="OnBtnLeftPressed"]
+[connection signal="button_up" from="Control/btnLeft" to="Control/scriptDirector" method="OnBtnLeftRelease"]
+[connection signal="button_down" from="Control/btnRight" to="Control/scriptDirector" method="OnBtnRightPressed"]
+[connection signal="button_up" from="Control/btnRight" to="Control/scriptDirector" method="OnBtnRightRelease"]
+[connection signal="button_down" from="Control/checkComBtn" to="Control/scriptDirector" method="OnCheckComPressed"]
+[connection signal="animation_finished" from="MeshInstance3D/AnimationPlayer" to="Control/scriptDirector" method="MonAnimFin"]
+[connection signal="animation_finished" from="RightDoorMesh3D/AnimationPlayer" to="Control/scriptDirector" method="DoorRightAnimFin"]
+[connection signal="animation_finished" from="LeftDoorMesh3D/AnimationPlayer" to="Control/scriptDirector" method="DoorLeftAnimFin"]
+[connection signal="button_down" from="DoorsBtnLeft/SubViewport/Control/Button" to="Control/scriptDirector" method="OnDoorLeftBtn3DPressed"]
+[connection signal="button_down" from="DooesBtnRight/SubViewport/Control/Button" to="Control/scriptDirector" method="OnDoorRightBtn3DPressed"]
 
 [editable path="MeshInstance3D"]
+[editable path="RightDoorMesh3D"]
+[editable path="LeftDoorMesh3D"]
+[editable path="DoorsBtnLeft"]
+[editable path="DoorsBtnLeft/SubViewport/Control"]
+[editable path="DooesBtnRight"]
+[editable path="DooesBtnRight/SubViewport/Control"]
