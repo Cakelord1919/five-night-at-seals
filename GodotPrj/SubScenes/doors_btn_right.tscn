@@ -1,12 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctxtj223xy3tv"]
 
-[ext_resource type="PackedScene" uid="uid://beu6xphvkw87f" path="res://SubScenes/doors_btn_left_2d_subview.tscn" id="1_4cyqq"]
-[ext_resource type="Script" path="res://Script/doors_btn_right.gd" id="1_7v646"]
+[ext_resource type="PackedScene" uid="uid://beu6xphvkw87f" path="res://SubScenes/doors_btn_2d_subview.tscn" id="1_4cyqq"]
+[ext_resource type="Script" uid="uid://cvbndg62ep4cb" path="res://Script/doors_btn_right.gd" id="1_7v646"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_oexa3"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ol1q8"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("BtnSceneRight")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g526w"]
 resource_local_to_scene = true
@@ -18,13 +18,13 @@ albedo_texture = SubResource("ViewportTexture_ol1q8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_4hdjr"]
 size = Vector3(1, 1, 0.150696)
 
-[node name="DooesBtnRight" type="Node3D"]
+[node name="DoorsBtnRight" type="Node3D"]
 script = ExtResource("1_7v646")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="BtnSceneRight" type="SubViewport" parent="."]
 render_target_update_mode = 4
 
-[node name="Control" parent="SubViewport" instance=ExtResource("1_4cyqq")]
+[node name="Control" parent="BtnSceneRight" instance=ExtResource("1_4cyqq")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_oexa3")

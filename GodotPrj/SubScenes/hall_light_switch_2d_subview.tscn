@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://yxofkpxrxhxq"]
+
+[ext_resource type="Script" uid="uid://bu41ln0r7suoc" path="res://Script/hall_light_switch_2d_subview.gd" id="1_3rhtp"]
+[ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_lwpc1"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3rhtp")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 648.0
+icon = ExtResource("1_lwpc1")
+expand_icon = true
+
+[connection signal="button_down" from="Button" to="." method="OnLightSwitchBtn3DPressed"]
+[connection signal="button_up" from="Button" to="." method="OnLightSwitchBtn3DReleased"]

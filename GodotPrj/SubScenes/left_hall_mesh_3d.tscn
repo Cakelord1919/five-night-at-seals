@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2up8q86era8s"]
+
+[ext_resource type="Texture2D" uid="uid://dobg0toqjq6e7" path="res://Texture/Hall/hall_left_light.png" id="2_p5ysa"]
+[ext_resource type="Texture2D" uid="uid://cstwdn0bpd3bs" path="res://Texture/Hall/hall_left.png" id="3_xi6oy"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t4tah"]
+flip_faces = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w46wb"]
+render_priority = -1
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_xi6oy")
+
+[sub_resource type="Animation" id="Animation_vl3ud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_xi6oy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:surface_material_override/0:render_priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_hqxfb"]
+resource_name = "dark"
+length = 0.0333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_xi6oy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:surface_material_override/0:render_priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_uqupv"]
+resource_name = "light"
+length = 0.0333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_p5ysa")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:surface_material_override/0:render_priority")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qd8c"]
+_data = {
+&"RESET": SubResource("Animation_vl3ud"),
+&"dark": SubResource("Animation_hqxfb"),
+&"light": SubResource("Animation_uqupv")
+}
+
+[node name="LeftHallMesh3D" type="MeshInstance3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("SphereMesh_t4tah")
+surface_material_override/0 = SubResource("StandardMaterial3D_w46wb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1qd8c")
+}
+speed_scale = 2.0

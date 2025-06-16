@@ -9,7 +9,7 @@ var last_event_pos2D := Vector2()
 ## The time of the last event in seconds since engine start.
 var last_event_time := -1.0
 
-@onready var node_viewport: SubViewport = $SubViewport
+@onready var node_viewport: SubViewport = $BtnSceneLeft
 @onready var node_quad: MeshInstance3D = $MeshInstance3D
 @onready var node_area: Area3D = $MeshInstance3D/Area3D
 

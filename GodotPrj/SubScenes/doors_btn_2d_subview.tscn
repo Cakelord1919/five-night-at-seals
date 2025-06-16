@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://beu6xphvkw87f"]
+
+[ext_resource type="Script" uid="uid://k720nxep3fmp" path="res://Script/doors_btn_2d_subview.gd" id="1_ayr8k"]
+[ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="2_th12p"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ayr8k")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+icon = ExtResource("2_th12p")
+expand_icon = true
+
+[connection signal="button_down" from="Button" to="." method="OnDoorBtn3DPressed"]

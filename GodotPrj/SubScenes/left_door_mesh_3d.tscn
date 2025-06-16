@@ -20,9 +20,8 @@ transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("10_43d6f")
 
-[sub_resource type="Animation" id="Animation_f0j7m"]
-resource_name = "lift"
-step = 0.0166667
+[sub_resource type="Animation" id="Animation_v56io"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,10 +29,10 @@ tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_lccuk"), ExtResource("2_xnpam"), ExtResource("3_htuo2"), ExtResource("4_fvqi3"), ExtResource("5_ty58v"), ExtResource("6_hnpa2"), ExtResource("7_b3uqn"), ExtResource("8_hxvd7"), ExtResource("9_jejk5"), ExtResource("10_43d6f")]
+"values": [ExtResource("10_43d6f")]
 }
 
 [sub_resource type="Animation" id="Animation_5f883"]
@@ -52,8 +51,9 @@ tracks/0/keys = {
 "values": [ExtResource("10_43d6f"), ExtResource("9_jejk5"), ExtResource("8_hxvd7"), ExtResource("7_b3uqn"), ExtResource("6_hnpa2"), ExtResource("5_ty58v"), ExtResource("4_fvqi3"), ExtResource("3_htuo2"), ExtResource("2_xnpam"), ExtResource("1_lccuk")]
 }
 
-[sub_resource type="Animation" id="Animation_v56io"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_f0j7m"]
+resource_name = "lift"
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -61,17 +61,17 @@ tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("10_43d6f")]
+"values": [ExtResource("1_lccuk"), ExtResource("2_xnpam"), ExtResource("3_htuo2"), ExtResource("4_fvqi3"), ExtResource("5_ty58v"), ExtResource("6_hnpa2"), ExtResource("7_b3uqn"), ExtResource("8_hxvd7"), ExtResource("9_jejk5"), ExtResource("10_43d6f")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o2eaq"]
 _data = {
-"RESET": SubResource("Animation_v56io"),
-"down": SubResource("Animation_5f883"),
-"lift": SubResource("Animation_f0j7m")
+&"RESET": SubResource("Animation_v56io"),
+&"down": SubResource("Animation_5f883"),
+&"lift": SubResource("Animation_f0j7m")
 }
 
 [node name="LeftDoorMesh3D" type="MeshInstance3D"]
@@ -81,6 +81,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_w46wb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_o2eaq")
+&"": SubResource("AnimationLibrary_o2eaq")
 }
 speed_scale = 2.0

@@ -1,17 +1,17 @@
 [gd_scene load_steps=19 format=3 uid="uid://cf5777qxo87lq"]
 
 [ext_resource type="Texture2D" uid="uid://dc1f3hlqlehgy" path="res://Texture/SecurityRoomInitial-Ver9-2025-6-12.png" id="1_4mamg"]
-[ext_resource type="Texture2D" uid="uid://xpepgjcgrmth" path="res://Texture/ComputerSequence/001.png" id="2_xagdq"]
-[ext_resource type="Texture2D" uid="uid://x0d441251teu" path="res://Texture/ComputerSequence/002.png" id="3_naxye"]
-[ext_resource type="Texture2D" uid="uid://bfyurhodbqw7x" path="res://Texture/ComputerSequence/003.png" id="4_6x7q0"]
-[ext_resource type="Texture2D" uid="uid://j7d32ynd1cnk" path="res://Texture/ComputerSequence/004.png" id="5_dvdlp"]
-[ext_resource type="Texture2D" uid="uid://g5sgtuf4tl51" path="res://Texture/ComputerSequence/005.png" id="6_47vxn"]
-[ext_resource type="Texture2D" uid="uid://drewafeij4f2c" path="res://Texture/ComputerSequence/006.png" id="7_g6aj8"]
-[ext_resource type="Texture2D" uid="uid://df44cud0mmsnx" path="res://Texture/ComputerSequence/007.png" id="8_s3eqo"]
-[ext_resource type="Texture2D" uid="uid://bgl6mtlssu2ak" path="res://Texture/ComputerSequence/008.png" id="9_wm35a"]
-[ext_resource type="Texture2D" uid="uid://5x1hqcifvtem" path="res://Texture/ComputerSequence/009.png" id="10_wbkwp"]
-[ext_resource type="Texture2D" uid="uid://iwks55ia4poy" path="res://Texture/ComputerSequence/010.png" id="11_vhx5n"]
-[ext_resource type="Texture2D" uid="uid://dbkoj74yebf8f" path="res://Texture/ComputerSequence/011.png" id="12_ngte5"]
+[ext_resource type="Texture2D" uid="uid://dochw50mwj27b" path="res://Texture/ComputerSequence/001.png" id="12_c4x6t"]
+[ext_resource type="Texture2D" uid="uid://b26jvys6twier" path="res://Texture/ComputerSequence/002.png" id="13_l427i"]
+[ext_resource type="Texture2D" uid="uid://c15mqprs61d14" path="res://Texture/ComputerSequence/003.png" id="14_soqwh"]
+[ext_resource type="Texture2D" uid="uid://cqcfbmxoonj4j" path="res://Texture/ComputerSequence/004.png" id="15_0fgt4"]
+[ext_resource type="Texture2D" uid="uid://c3rfppjq6v3fl" path="res://Texture/ComputerSequence/005.png" id="16_l0ulq"]
+[ext_resource type="Texture2D" uid="uid://bhb8s0pj3wvm3" path="res://Texture/ComputerSequence/006.png" id="17_pb2q6"]
+[ext_resource type="Texture2D" uid="uid://dychie1578n5o" path="res://Texture/ComputerSequence/007.png" id="18_ii8px"]
+[ext_resource type="Texture2D" uid="uid://cphs63aru0ys8" path="res://Texture/ComputerSequence/008.png" id="19_w3ngi"]
+[ext_resource type="Texture2D" uid="uid://b2ve1mucknfgg" path="res://Texture/ComputerSequence/009.png" id="20_tnlvd"]
+[ext_resource type="Texture2D" uid="uid://i6jsi0cmlgv3" path="res://Texture/ComputerSequence/010.png" id="21_w1tt1"]
+[ext_resource type="Texture2D" uid="uid://prhien75ljyl" path="res://Texture/ComputerSequence/011.png" id="22_dn1so"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_l2j4c"]
 flip_faces = true
@@ -40,7 +40,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6myaw"]
 resource_name = "back"
-step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("12_ngte5"), ExtResource("11_vhx5n"), ExtResource("10_wbkwp"), ExtResource("9_wm35a"), ExtResource("8_s3eqo"), ExtResource("7_g6aj8"), ExtResource("6_47vxn"), ExtResource("5_dvdlp"), ExtResource("4_6x7q0"), ExtResource("3_naxye"), ExtResource("1_4mamg")]
+"values": [ExtResource("22_dn1so"), ExtResource("21_w1tt1"), ExtResource("20_tnlvd"), ExtResource("19_w3ngi"), ExtResource("18_ii8px"), ExtResource("17_pb2q6"), ExtResource("16_l0ulq"), ExtResource("15_0fgt4"), ExtResource("14_soqwh"), ExtResource("13_l427i"), ExtResource("12_c4x6t")]
 }
 
 [sub_resource type="Animation" id="Animation_lj4gy"]
@@ -67,14 +66,14 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_xagdq"), ExtResource("3_naxye"), ExtResource("4_6x7q0"), ExtResource("5_dvdlp"), ExtResource("6_47vxn"), ExtResource("7_g6aj8"), ExtResource("8_s3eqo"), ExtResource("9_wm35a"), ExtResource("10_wbkwp"), ExtResource("11_vhx5n"), ExtResource("12_ngte5")]
+"values": [ExtResource("12_c4x6t"), ExtResource("13_l427i"), ExtResource("14_soqwh"), ExtResource("15_0fgt4"), ExtResource("16_l0ulq"), ExtResource("17_pb2q6"), ExtResource("18_ii8px"), ExtResource("19_w3ngi"), ExtResource("20_tnlvd"), ExtResource("21_w1tt1"), ExtResource("22_dn1so")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qk8d"]
 _data = {
-"RESET": SubResource("Animation_tigbg"),
-"back": SubResource("Animation_6myaw"),
-"forward": SubResource("Animation_lj4gy")
+&"RESET": SubResource("Animation_tigbg"),
+&"back": SubResource("Animation_6myaw"),
+&"forward": SubResource("Animation_lj4gy")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D"]
@@ -85,6 +84,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mqtl0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1qk8d")
+&"": SubResource("AnimationLibrary_1qk8d")
 }
 speed_scale = 2.0
