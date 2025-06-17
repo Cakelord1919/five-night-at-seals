@@ -94,10 +94,10 @@ transform = Transform3D(-0.00610816, 0, -0.0596883, 0, 0.06, 0, 0.0596883, 0, -0
 transform = Transform3D(-0.01728, -0.00596737, 0.0571471, -0.000879003, 0.059696, 0.00596773, -0.0574511, 0.000881503, -0.0172799, -0.463591, -0.0335252, 0.157371)
 
 [node name="RightHallMesh3D" parent="." instance=ExtResource("8_7ycvg")]
-transform = Transform3D(1, 1.50996e-07, -1.50996e-07, -1.50996e-07, 1, -7.6233e-21, -1.50996e-07, -2.27998e-14, -1, 0.02, 0, 0.03)
+transform = Transform3D(1, 1.50996e-07, -1.50996e-07, -1.50996e-07, 1, -7.6233e-21, -1.50996e-07, -2.27998e-14, -1, 0.02, 0, 0.035)
 
 [node name="LeftHallMesh3D" parent="." instance=ExtResource("9_wr18j")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.02, 0, 0.03)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.01, 0, 0.035)
 
 [node name="LeftHallLightSwitch" parent="." instance=ExtResource("10_qwutr")]
 transform = Transform3D(-8.74228e-09, 0.00942286, -0.199878, 0, 0.269836, 0.0069799, 0.2, 4.11886e-10, -8.73695e-09, 0.349292, -0.0409213, 0.264055)

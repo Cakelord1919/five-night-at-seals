@@ -27,8 +27,8 @@ extends Node2D
 @onready var ogDoorsBtnRight3DCtrl: Control = $"../../DoorsBtnRight/BtnSceneRight/Control"
 @onready var ogDoorsBtnLeft3D: Button = $"../../DoorsBtnLeft/BtnSceneLeft/Control/Button"
 @onready var ogDoorsBtnRight3D: Button = $"../../DoorsBtnRight/BtnSceneRight/Control/Button"
-@onready var ogHallLeftLight3DCtrl: Control = $"../../LeftHallLightSwitch/LightSwitchSceneLeft/Control"
-@onready var ogHallRightLight3DCtrl: Control = $"../../RightHallLightSwitch/LightSwitchSceneRight/Control"
+@onready var ogHallLeftLight3D: Node3D = $"../../LeftHallLightSwitch"
+@onready var ogHallRightLight3D: Node3D = $"../../RightHallLightSwitch"
 @onready var ogHallLeftLight3DBtn: Button = $"../../LeftHallLightSwitch/LightSwitchSceneLeft/Control/Button"
 @onready var ogHallRightLight3DBtn: Button = $"../../RightHallLightSwitch/LightSwitchSceneRight/Control/Button"
 
@@ -66,13 +66,14 @@ func _ready() -> void:
 	ogDoorsBtnLeft3DCtrl.door_3d_button_was_pressed.connect(OnDoorLeftBtn3DPressed)
 	ogDoorsBtnRight3DCtrl.door_3d_button_was_pressed.connect(OnDoorRightBtn3DPressed)
 
-	# Signal received from hall_light_switch_2d_subview.gd
+	# Signal received from 
+	# left_hall_light_switch_2d.gd & right_hall_light_switch_2d.gd
 	# attached to each side 3d button's Control node
 	# and execute the correspond door animation function
-	ogHallLeftLight3DCtrl.door_light_switch_pressed.connect(OnLightSwitchLeft3DPressed)
-	ogHallRightLight3DCtrl.door_light_switch_pressed.connect(OnLightSwitchRight3DPressed)
-	ogHallLeftLight3DCtrl.door_light_switch_released.connect(OnLightSwitchLeft3DReleased)
-	ogHallRightLight3DCtrl.door_light_switch_released.connect(OnLightSwitchRight3DReleased)
+	ogHallLeftLight3D.door_light_switch_pressed_processed.connect(OnLightSwitchLeft3DPressed)
+	ogHallRightLight3D.door_light_switch_pressed_processed.connect(OnLightSwitchRight3DPressed)
+	ogHallLeftLight3D.door_light_switch_released_processed.connect(OnLightSwitchLeft3DReleased)
+	ogHallRightLight3D.door_light_switch_released_processed.connect(OnLightSwitchRight3DReleased)
 	pass
 
 
@@ -255,18 +256,30 @@ func OnLightSwitchRight3DPressed():
 func OnLightSwitchLeft3DReleased():
 	#Left Lights off
 	okgHallLeftAnim.play("dark")
+	# This hack fixes the weird glitch that when you drag your mouse out
+	# of this 3d button area while holding it, it becomes unclickable and 
+	# freezes at "pressed" status unless you press it again.
+	# I guess that's because changing the visible property will force the 
+	# engine to reload it and reset its all property.
+	ogHallLeftLight3DBtn.visible = false
+	ogHallLeftLight3DBtn.visible = true
 	pass
 
 func OnLightSwitchRight3DReleased():
 	#Right Lights off
 	okgHallRightAnim.play("dark")
+	# This hack fixes the weird glitch that when you drag your mouse out
+	# of this 3d button area while holding it, it becomes unclickable and 
+	# freezes at "pressed" status unless you press it again.
+	# I guess that's because changing the visible property will force the 
+	# engine to reload it and reset its all property.
+	ogHallRightLight3DBtn.visible = false
+	ogHallRightLight3DBtn.visible = true
 	pass
 
 func OnCheckComPressed():
-	#print("btn pressed")
 	gbCheckCom = !gbCheckCom
 	gbResetCam = 1
-	#processingComputerAnim()
 	pass
 
 func ComAnimFin(anim_name: StringName) -> void:
@@ -284,7 +297,7 @@ func ComAnimFin(anim_name: StringName) -> void:
 func DoorLeftAnimFin(anim_name: StringName) -> void:
 	if anim_name == "lift":
 		enableAllBtns3D()
-		#This re-enables the light switch after the door is opened
+		# This re-enables the light switch after the door is opened
 		enableLeftLight()
 	if anim_name == "down":
 		enableAllBtns3D()
@@ -293,7 +306,7 @@ func DoorLeftAnimFin(anim_name: StringName) -> void:
 func DoorRightAnimFin(anim_name: StringName) -> void:
 	if anim_name == "lift":
 		enableAllBtns3D()
-		#This re-enables the light switch after the door is opened
+		# This re-enables the light switch after the door is opened
 		enableRightLight()
 	if anim_name == "down":
 		enableAllBtns3D()

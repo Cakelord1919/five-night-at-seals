@@ -11,12 +11,21 @@ var last_event_time := -1.0
 @onready var node_viewport: SubViewport = $LightSwitchSceneRight
 @onready var node_quad: MeshInstance3D = $MeshInstance3D
 @onready var node_area: Area3D = $MeshInstance3D/Area3D
+@onready var control: Control = $LightSwitchSceneRight/Control
 
+
+signal door_light_switch_pressed_processed
+signal door_light_switch_released_processed
 
 func _ready() -> void:
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	node_area.mouse_exited.connect(_mouse_exited_area)
 	node_area.input_event.connect(_mouse_input_event)
+	# Signal received from hall_light_switch_2d_subview.gd
+	# attached to each side 3d button's Control node
+	# and execute the correspond door animation function
+	control.door_light_switch_pressed.connect(ProcessLightSwitchPres)
+	control.door_light_switch_released.connect(ProcessLightSwitchRel)
 
 	# If the material is NOT set to use billboard settings, then avoid running billboard specific code
 	if node_quad.get_surface_override_material(0).billboard_mode == BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED:
@@ -38,6 +47,7 @@ func _mouse_exited_area() -> void:
 	# Notify the viewport that the mouse is no longer hovering it.
 	node_viewport.notification(NOTIFICATION_VP_MOUSE_EXIT)
 	is_mouse_inside = false
+	emit_signal("door_light_switch_released_processed")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -134,3 +144,11 @@ func rotate_area_to_billboard() -> void:
 
 		# Rotate in the Z axis to compensate camera tilt.
 		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
+
+func ProcessLightSwitchPres():
+	emit_signal("door_light_switch_pressed_processed")
+	pass
+
+func ProcessLightSwitchRel():
+	emit_signal("door_light_switch_released_processed")
+	pass
