@@ -15,6 +15,21 @@ full_lower_case means a signal
 #########################################
 '''
 
+'''
+#########################################
+			Note
+This script controls functions in main
+scene(aka security room).
+Attached to main_scene.tscn(Aka Node3D)
+The functions are:
+	-Doors control
+	-Check Computer
+	-Lights system
+	-UI and buttons
+	-Camera3D view and angle
+#########################################
+'''
+
 extends Node2D
 
 @onready var ogCamera3D: Camera3D = $"../../Camera3D"

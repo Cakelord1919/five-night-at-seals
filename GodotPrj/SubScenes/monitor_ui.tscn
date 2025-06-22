@@ -1,13 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0qikit328i7c"]
+[gd_scene load_steps=9 format=3 uid="uid://b0qikit328i7c"]
 
 [ext_resource type="Texture2D" uid="uid://7oryh8x5b41j" path="res://Texture/UI/monitorUI_v0.3.png" id="1_dr8ko"]
+[ext_resource type="Script" uid="uid://igg55oep1ge7" path="res://Script/monitor_ui.gd" id="1_pnies"]
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="2_3xoc5"]
-[ext_resource type="PackedScene" uid="uid://br7k5dtujv5sq" path="res://SubScenes/CameraViews/stage_cam.tscn" id="3_pnies"]
+[ext_resource type="PackedScene" uid="uid://br7k5dtujv5sq" path="res://SubScenes/CameraViews/security_cam.tscn" id="3_pnies"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3xoc5"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="Animation" id="Animation_pnies"]
+resource_name = "spin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_318y1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rx1ev"]
+_data = {
+&"RESET": SubResource("Animation_318y1"),
+&"spin": SubResource("Animation_pnies")
+}
+
 [node name="MonitorUI" type="Node2D"]
+script = ExtResource("1_pnies")
 
 [node name="MonitorProgram" type="Sprite2D" parent="."]
 position = Vector2(586, 329)
@@ -37,7 +75,7 @@ offset_left = 43.0
 offset_top = 208.0
 offset_right = 222.0
 offset_bottom = 249.0
-text = "Can3"
+text = "Cam3"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
 
@@ -68,11 +106,33 @@ text = "Cam6"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 241.0
+offset_top = 79.0
+offset_right = 990.0
+offset_bottom = 524.0
+texture = SubResource("ViewportTexture_3xoc5")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(749, 445)
 
 [node name="StageCam" parent="SubViewport" instance=ExtResource("3_pnies")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(616, 302)
-texture = SubResource("ViewportTexture_3xoc5")
+[node name="LoadingAnim" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.235294)
+z_index = 2
+position = Vector2(624, 295)
+texture = ExtResource("2_3xoc5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingAnim"]
+libraries = {
+&"": SubResource("AnimationLibrary_rx1ev")
+}
+autoplay = "RESET"
+speed_scale = 3.0
+
+[connection signal="button_down" from="Cam1Btn" to="." method="OnCam1BtnPressed"]
+[connection signal="button_down" from="Cam3Btn" to="." method="OnCam3BtnPressed"]
+[connection signal="button_down" from="Cam6Btn" to="." method="OnCam6BtnPressed"]
+[connection signal="animation_finished" from="LoadingAnim/AnimationPlayer" to="." method="OnLoadingAnimFin"]
