@@ -23,6 +23,7 @@ extends Node2D
 @onready var ogTurnRightBtn: Button = $"../btnRight"
 @onready var ogMapBtn: Button = $"../openMapBtn"
 @onready var ogMonBtn: Button = $"../checkComBtn"
+@onready var ogMonitorUI: Node2D = $"../MonitorUI"
 @onready var ogDoorsBtnLeft3DCtrl: Control = $"../../DoorsBtnLeft/BtnSceneLeft/Control"
 @onready var ogDoorsBtnRight3DCtrl: Control = $"../../DoorsBtnRight/BtnSceneRight/Control"
 @onready var ogDoorsBtnLeft3D: Button = $"../../DoorsBtnLeft/BtnSceneLeft/Control/Button"
@@ -32,12 +33,12 @@ extends Node2D
 @onready var ogHallLeftLight3DBtn: Button = $"../../LeftHallLightSwitch/LightSwitchSceneLeft/Control/Button"
 @onready var ogHallRightLight3DBtn: Button = $"../../RightHallLightSwitch/LightSwitchSceneRight/Control/Button"
 
-
 @export var okgComAnim: AnimationPlayer
 @export var okgDoorLeftAnim: AnimationPlayer
 @export var okgDoorRightAnim: AnimationPlayer
 @export var okgHallLeftAnim: AnimationPlayer
 @export var okgHallRightAnim: AnimationPlayer
+@export var okgUITransistion: AnimationPlayer
 
 var gwRotationTimes = 0
 var gwRotationArrow = 0 #1 for left, -1 for right
@@ -168,8 +169,9 @@ func processingComAnim():
 		okgComAnim.play("forward")
 	else:
 		#disableAllBtns()
-		ogCamera3D.fov = 55.0
-		okgComAnim.play("back")
+		#ogCamera3D.fov = 55.0
+		okgUITransistion.play("fly_down")
+		#okgComAnim.play("back")
 	pass
 
 func processingDoorLeftAnim():
@@ -285,7 +287,8 @@ func OnCheckComPressed():
 func ComAnimFin(anim_name: StringName) -> void:
 	if anim_name == "forward":
 		ogMapBtn.visible = true
-		ogCamera3D.fov = 45.0
+		okgUITransistion.play("fly_up")
+		#ogCamera3D.fov = 45.0
 		enableAllBtns()
 	if anim_name == "back":
 		ogTurnLeftBtn.visible = true
@@ -322,4 +325,12 @@ func ProcessingCameraAngle():
 func ProcessingCameraReset():
 	if gbResetCam:
 		cameraReset()
+	pass
+
+func AnimationUIFin(anim_name: StringName):
+	if anim_name == "fly_up":
+		ogMonitorUI.visible = true
+	elif anim_name == "fly_down":
+		ogMonitorUI.visible = false
+		okgComAnim.play("back")
 	pass

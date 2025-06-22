@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://tgw7ajvfcoyv"]
+[gd_scene load_steps=14 format=3 uid="uid://tgw7ajvfcoyv"]
 
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_n0ddm"]
-[ext_resource type="Script" path="res://Script/script_director.gd" id="2_dc0yv"]
+[ext_resource type="Script" uid="uid://de1ja24qwsuwn" path="res://Script/script_director.gd" id="2_dc0yv"]
+[ext_resource type="PackedScene" uid="uid://b0qikit328i7c" path="res://SubScenes/monitor_ui.tscn" id="3_671wp"]
 [ext_resource type="PackedScene" uid="uid://cf5777qxo87lq" path="res://SubScenes/monitor_room_sphere.tscn" id="3_h8xch"]
 [ext_resource type="PackedScene" uid="uid://4u57eo1c00vb" path="res://SubScenes/right_door_mesh_3d.tscn" id="4_0myca"]
+[ext_resource type="PackedScene" uid="uid://dp581h6dd6mgl" path="res://SubScenes/transition_animation_ui.tscn" id="4_mo76n"]
 [ext_resource type="PackedScene" uid="uid://ded8n66u2cy3k" path="res://SubScenes/left_door_mesh_3d.tscn" id="5_1ad7k"]
 [ext_resource type="PackedScene" uid="uid://cdlfwhbihaocp" path="res://SubScenes/doors_btn_left.tscn" id="6_ciqqw"]
 [ext_resource type="PackedScene" uid="uid://ctxtj223xy3tv" path="res://SubScenes/doors_btn_right.tscn" id="7_coa4x"]
@@ -48,17 +50,19 @@ action_mode = 0
 icon = ExtResource("1_n0ddm")
 expand_icon = true
 
-[node name="scriptDirector" type="Node2D" parent="Control" node_paths=PackedStringArray("okgComAnim", "okgDoorLeftAnim", "okgDoorRightAnim", "okgHallLeftAnim", "okgHallRightAnim")]
+[node name="scriptDirector" type="Node2D" parent="Control" node_paths=PackedStringArray("okgComAnim", "okgDoorLeftAnim", "okgDoorRightAnim", "okgHallLeftAnim", "okgHallRightAnim", "okgUITransistion")]
 script = ExtResource("2_dc0yv")
 okgComAnim = NodePath("../../MeshInstance3D/AnimationPlayer")
 okgDoorLeftAnim = NodePath("../../LeftDoorMesh3D/AnimationPlayer")
 okgDoorRightAnim = NodePath("../../RightDoorMesh3D/AnimationPlayer")
 okgHallLeftAnim = NodePath("../../LeftHallMesh3D/AnimationPlayer")
 okgHallRightAnim = NodePath("../../RightHallMesh3D/AnimationPlayer")
+okgUITransistion = NodePath("../TransitionAnimationUI/AnimationPlayer")
 
 [node name="openMapBtn" type="Button" parent="Control"]
 visible = false
 modulate = Color(1, 1, 1, 0.0784314)
+z_index = 2
 layout_mode = 0
 offset_left = 145.0
 offset_top = 580.0
@@ -70,6 +74,7 @@ expand_icon = true
 
 [node name="checkComBtn" type="Button" parent="Control"]
 modulate = Color(1, 1, 1, 0.0784314)
+z_index = 2
 layout_mode = 0
 offset_left = 603.0
 offset_top = 579.0
@@ -78,6 +83,11 @@ offset_bottom = 643.0
 icon = ExtResource("1_n0ddm")
 icon_alignment = 1
 expand_icon = true
+
+[node name="MonitorUI" parent="Control" instance=ExtResource("3_671wp")]
+visible = false
+
+[node name="TransitionAnimationUI" parent="Control" instance=ExtResource("4_mo76n")]
 
 [node name="MeshInstance3D" parent="." instance=ExtResource("3_h8xch")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
@@ -110,10 +120,12 @@ transform = Transform3D(-8.74228e-09, -0.00942286, 0.199878, 0, 0.269836, 0.0069
 [connection signal="button_down" from="Control/btnRight" to="Control/scriptDirector" method="OnBtnRightPressed"]
 [connection signal="button_up" from="Control/btnRight" to="Control/scriptDirector" method="OnBtnRightRelease"]
 [connection signal="button_down" from="Control/checkComBtn" to="Control/scriptDirector" method="OnCheckComPressed"]
+[connection signal="animation_finished" from="Control/TransitionAnimationUI/AnimationPlayer" to="Control/scriptDirector" method="AnimationUIFin"]
 [connection signal="animation_finished" from="MeshInstance3D/AnimationPlayer" to="Control/scriptDirector" method="ComAnimFin"]
 [connection signal="animation_finished" from="RightDoorMesh3D/AnimationPlayer" to="Control/scriptDirector" method="DoorRightAnimFin"]
 [connection signal="animation_finished" from="LeftDoorMesh3D/AnimationPlayer" to="Control/scriptDirector" method="DoorLeftAnimFin"]
 
+[editable path="Control/TransitionAnimationUI"]
 [editable path="MeshInstance3D"]
 [editable path="RightDoorMesh3D"]
 [editable path="LeftDoorMesh3D"]

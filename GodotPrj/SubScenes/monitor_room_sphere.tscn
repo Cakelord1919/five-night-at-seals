@@ -1,17 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://cf5777qxo87lq"]
+[gd_scene load_steps=18 format=3 uid="uid://cf5777qxo87lq"]
 
-[ext_resource type="Texture2D" uid="uid://dc1f3hlqlehgy" path="res://Texture/SecurityRoomInitial-Ver9-2025-6-12.png" id="1_4mamg"]
-[ext_resource type="Texture2D" uid="uid://dochw50mwj27b" path="res://Texture/ComputerSequence/001.png" id="12_c4x6t"]
-[ext_resource type="Texture2D" uid="uid://b26jvys6twier" path="res://Texture/ComputerSequence/002.png" id="13_l427i"]
-[ext_resource type="Texture2D" uid="uid://c15mqprs61d14" path="res://Texture/ComputerSequence/003.png" id="14_soqwh"]
-[ext_resource type="Texture2D" uid="uid://cqcfbmxoonj4j" path="res://Texture/ComputerSequence/004.png" id="15_0fgt4"]
-[ext_resource type="Texture2D" uid="uid://c3rfppjq6v3fl" path="res://Texture/ComputerSequence/005.png" id="16_l0ulq"]
-[ext_resource type="Texture2D" uid="uid://bhb8s0pj3wvm3" path="res://Texture/ComputerSequence/006.png" id="17_pb2q6"]
-[ext_resource type="Texture2D" uid="uid://dychie1578n5o" path="res://Texture/ComputerSequence/007.png" id="18_ii8px"]
-[ext_resource type="Texture2D" uid="uid://cphs63aru0ys8" path="res://Texture/ComputerSequence/008.png" id="19_w3ngi"]
-[ext_resource type="Texture2D" uid="uid://b2ve1mucknfgg" path="res://Texture/ComputerSequence/009.png" id="20_tnlvd"]
-[ext_resource type="Texture2D" uid="uid://i6jsi0cmlgv3" path="res://Texture/ComputerSequence/010.png" id="21_w1tt1"]
-[ext_resource type="Texture2D" uid="uid://prhien75ljyl" path="res://Texture/ComputerSequence/011.png" id="22_dn1so"]
+[ext_resource type="Texture2D" uid="uid://b0q43tq0jaq7j" path="res://Texture/ComSequenceWithDesktop/001.png" id="13_soqwh"]
+[ext_resource type="Texture2D" uid="uid://c0s5uyb8aho2u" path="res://Texture/ComSequenceWithDesktop/002.png" id="14_0fgt4"]
+[ext_resource type="Texture2D" uid="uid://csmf7ioixgeg5" path="res://Texture/ComSequenceWithDesktop/003.png" id="15_l0ulq"]
+[ext_resource type="Texture2D" uid="uid://ddla74y8wljv8" path="res://Texture/ComSequenceWithDesktop/004.png" id="16_pb2q6"]
+[ext_resource type="Texture2D" uid="uid://cqgo71ue1llo6" path="res://Texture/ComSequenceWithDesktop/005.png" id="17_ii8px"]
+[ext_resource type="Texture2D" uid="uid://c3d3rj54yu264" path="res://Texture/ComSequenceWithDesktop/006.png" id="18_w3ngi"]
+[ext_resource type="Texture2D" uid="uid://bj4hbrge1opbx" path="res://Texture/ComSequenceWithDesktop/007.png" id="19_tnlvd"]
+[ext_resource type="Texture2D" uid="uid://b7q1c6mj6m4y5" path="res://Texture/ComSequenceWithDesktop/008.png" id="20_w1tt1"]
+[ext_resource type="Texture2D" uid="uid://dmv4ytft1awhi" path="res://Texture/ComSequenceWithDesktop/009.png" id="21_dn1so"]
+[ext_resource type="Texture2D" uid="uid://o0w4g4qx1u68" path="res://Texture/ComSequenceWithDesktop/010.png" id="22_gkdad"]
+[ext_resource type="Texture2D" uid="uid://boqokel8408hu" path="res://Texture/ComSequenceWithDesktop/011.png" id="23_eacpo"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_l2j4c"]
 flip_faces = true
@@ -19,7 +18,7 @@ flip_faces = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqtl0"]
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource("1_4mamg")
+albedo_texture = ExtResource("13_soqwh")
 uv1_scale = Vector3(-1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_tigbg"]
@@ -35,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_4mamg")]
+"values": [ExtResource("13_soqwh")]
 }
 
 [sub_resource type="Animation" id="Animation_6myaw"]
@@ -50,12 +49,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("22_dn1so"), ExtResource("21_w1tt1"), ExtResource("20_tnlvd"), ExtResource("19_w3ngi"), ExtResource("18_ii8px"), ExtResource("17_pb2q6"), ExtResource("16_l0ulq"), ExtResource("15_0fgt4"), ExtResource("14_soqwh"), ExtResource("13_l427i"), ExtResource("12_c4x6t")]
+"values": [ExtResource("23_eacpo"), ExtResource("22_gkdad"), ExtResource("21_dn1so"), ExtResource("20_w1tt1"), ExtResource("19_tnlvd"), ExtResource("18_w3ngi"), ExtResource("17_ii8px"), ExtResource("16_pb2q6"), ExtResource("15_l0ulq"), ExtResource("14_0fgt4"), ExtResource("13_soqwh")]
 }
 
 [sub_resource type="Animation" id="Animation_lj4gy"]
 resource_name = "forward"
-step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,7 +64,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("12_c4x6t"), ExtResource("13_l427i"), ExtResource("14_soqwh"), ExtResource("15_0fgt4"), ExtResource("16_l0ulq"), ExtResource("17_pb2q6"), ExtResource("18_ii8px"), ExtResource("19_w3ngi"), ExtResource("20_tnlvd"), ExtResource("21_w1tt1"), ExtResource("22_dn1so")]
+"values": [ExtResource("13_soqwh"), ExtResource("14_0fgt4"), ExtResource("15_l0ulq"), ExtResource("16_pb2q6"), ExtResource("17_ii8px"), ExtResource("18_w3ngi"), ExtResource("19_tnlvd"), ExtResource("20_w1tt1"), ExtResource("21_dn1so"), ExtResource("22_gkdad"), ExtResource("23_eacpo")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qk8d"]
