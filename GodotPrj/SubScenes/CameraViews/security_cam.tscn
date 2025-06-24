@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://br7k5dtujv5sq"]
+[gd_scene load_steps=14 format=3 uid="uid://br7k5dtujv5sq"]
 
 [ext_resource type="Texture2D" uid="uid://crv6bws1ugjc5" path="res://Texture/CamView/StageRoomInitial_downscaled_2x.png" id="1_gihwh"]
 [ext_resource type="Shader" uid="uid://djhxwmrwigvp3" path="res://Shader/camera_crt.gdshader" id="1_pockd"]
 [ext_resource type="Texture2D" uid="uid://cd001qv75xsve" path="res://Texture/CamView/WashRoom.png" id="2_pockd"]
+[ext_resource type="Texture2D" uid="uid://cycaiiyreyhd4" path="res://Texture/CamView/BackRoomInitial-Ver2-2025-6-23_downscaled_2x.png" id="3_mwpq3"]
+[ext_resource type="Shader" uid="uid://dg1qsb7hw0vdk" path="res://Shader/panorama.gdshader" id="5_qd11y"]
+[ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="5_uieis"]
 
 [sub_resource type="Animation" id="Animation_oi1ss"]
 length = 0.001
@@ -41,6 +44,71 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("1_gihwh")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_uieis"]
+resource_name = "backroom"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8, 2, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-240, 226), Vector2(930, 226), Vector2(930, 226), Vector2(-240, 226)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_mwpq3")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.37, 0.37)]
 }
 
 [sub_resource type="Animation" id="Animation_07k7h"]
@@ -83,6 +151,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ExtResource("1_gihwh")]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
 
 [sub_resource type="Animation" id="Animation_06vsj"]
 resource_name = "stage_2"
@@ -124,10 +204,23 @@ tracks/2/keys = {
 "update": 1,
 "values": [ExtResource("2_pockd")]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_06vsj"]
 _data = {
 &"RESET": SubResource("Animation_oi1ss"),
+&"backroom": SubResource("Animation_uieis"),
 &"stage": SubResource("Animation_07k7h"),
 &"washroom": SubResource("Animation_06vsj")
 }
@@ -156,6 +249,13 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fiay8"]
+shader = ExtResource("5_qd11y")
+shader_parameter/zoom = 75
+shader_parameter/smoothed = true
+shader_parameter/vertical = false
+shader_parameter/noWrap = true
+
 [node name="SecurityCam" type="Node2D"]
 
 [node name="CameraView" type="Sprite2D" parent="."]
@@ -170,9 +270,24 @@ libraries = {
 autoplay = "stage"
 speed_scale = 0.2
 
-[node name="TextureRect" type="ColorRect" parent="CameraView"]
+[node name="TextureRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_pockd")
-offset_left = -2834.0
-offset_top = -1585.0
-offset_right = 3604.0
-offset_bottom = 1774.0
+offset_left = -478.0
+offset_top = -199.0
+offset_right = 1510.0
+offset_bottom = 831.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fiay8")
+offset_left = -3.0
+offset_top = -10.0
+offset_right = 749.0
+offset_bottom = 536.0
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_right = 749.0
+offset_bottom = 444.0
+icon = ExtResource("5_uieis")
+icon_alignment = 1
+expand_icon = true

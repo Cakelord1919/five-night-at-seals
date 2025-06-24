@@ -42,7 +42,7 @@ const CAM_1: StringName = ""
 const CAM_2: StringName = ""
 const CAM_3: StringName = "stage"
 const CAM_4: StringName = ""
-const CAM_5: StringName = ""
+const CAM_5: StringName = "backroom"
 const CAM_6: StringName = "washroom"
 
 var gsCamera2DName: StringName = CAM_3
@@ -83,10 +83,17 @@ func switchToWashroom():
 	ogCameraView2D.play("washroom")
 	pass
 
+func switchToBackroom():
+	ogCameraView2D.play("backroom")
+	pass
+
 func processingCamera2D():
 	match gsCamera2DName:
 		CAM_3:
 			switchToStage()
+			pass
+		CAM_5:
+			switchToBackroom()
 			pass
 		CAM_6:
 			switchToWashroom()
@@ -113,6 +120,12 @@ func OnCam4BtnPressed():
 	pass
 
 func OnCam5BtnPressed():
+	if gsCamera2DName != CAM_5:
+		gsCamera2DName = CAM_5
+		ogLoadingAnim.visible = true
+		ogLoadingAnimPlayer.play("spin")
+		ogCameraView2D.pause()
+		disableAllCamBtns()
 	pass
 
 func OnCam6BtnPressed():
