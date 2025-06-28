@@ -1,10 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0qikit328i7c"]
+[gd_scene load_steps=21 format=3 uid="uid://b0qikit328i7c"]
 
 [ext_resource type="Script" uid="uid://igg55oep1ge7" path="res://Script/monitor_ui.gd" id="1_pnies"]
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="2_3xoc5"]
-[ext_resource type="Texture2D" uid="uid://kog8aemr2n5v" path="res://Texture/UI/monitorUI_v0.4.png" id="2_318y1"]
+[ext_resource type="Texture2D" uid="uid://bno00sjfg16ih" path="res://Texture/UI/monitorUI_v0.62.png" id="2_cw4ec"]
+[ext_resource type="Texture2D" uid="uid://b0suuxj82rfw6" path="res://Texture/UI/selected_cam1.png" id="3_4kpv2"]
 [ext_resource type="PackedScene" uid="uid://br7k5dtujv5sq" path="res://SubScenes/CameraViews/security_cam.tscn" id="3_pnies"]
+[ext_resource type="Texture2D" uid="uid://c0yd30vfdr7pc" path="res://Texture/UI/selected_cam2.png" id="4_u6uuf"]
 [ext_resource type="Texture2D" uid="uid://c1ntk7sha0ki4" path="res://Texture/UI/floating_ad.png" id="5_318y1"]
+[ext_resource type="Texture2D" uid="uid://dniubutbjdv6c" path="res://Texture/UI/selected_cam3.png" id="5_uxqhc"]
+[ext_resource type="Texture2D" uid="uid://b7toowh5xiarf" path="res://Texture/UI/selected_cam4.png" id="6_qwapc"]
+[ext_resource type="Shader" uid="uid://djhxwmrwigvp3" path="res://Shader/camera_crt.gdshader" id="7_5dk0d"]
+[ext_resource type="Texture2D" uid="uid://76i688np1ysg" path="res://Texture/UI/selected_cam5.png" id="7_typge"]
+[ext_resource type="Texture2D" uid="uid://cmb6lfxc8yaxu" path="res://Texture/UI/selected_cam6.png" id="8_m5q1s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3xoc5"]
 viewport_path = NodePath("SubViewport")
@@ -83,65 +90,148 @@ _data = {
 &"float": SubResource("Animation_rx1ev")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbo4c"]
+shader = ExtResource("7_5dk0d")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.045
+shader_parameter/grille_opacity = 0.12
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.2
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.005
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.05
+shader_parameter/aberration = 0.015
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
 [node name="MonitorUI" type="Node2D"]
 script = ExtResource("1_pnies")
 
 [node name="MonitorProgram" type="Sprite2D" parent="."]
-texture_filter = 2
+texture_filter = 4
 position = Vector2(586, 329)
 scale = Vector2(0.268326, 0.268326)
-texture = ExtResource("2_318y1")
+texture = ExtResource("2_cw4ec")
+
+[node name="CAM1Selected" type="Sprite2D" parent="MonitorProgram"]
+visible = false
+z_index = 2
+texture_filter = 2
+position = Vector2(-1783.47, -759.705)
+scale = Vector2(1.00965, 1.00965)
+texture = ExtResource("3_4kpv2")
+
+[node name="CAM2Selected" type="Sprite2D" parent="MonitorProgram"]
+visible = false
+z_index = 2
+texture_filter = 2
+position = Vector2(-1783.47, -621.812)
+scale = Vector2(1.00965, 1.00965)
+texture = ExtResource("4_u6uuf")
+
+[node name="CAM3Selected" type="Sprite2D" parent="MonitorProgram"]
+z_index = 2
+texture_filter = 2
+position = Vector2(-1783.47, -483.921)
+scale = Vector2(1.00965, 1.00965)
+texture = ExtResource("5_uxqhc")
+
+[node name="CAM4Selected" type="Sprite2D" parent="MonitorProgram"]
+visible = false
+z_index = 2
+texture_filter = 2
+position = Vector2(-1783.47, -342.302)
+scale = Vector2(1.00965, 1.00965)
+texture = ExtResource("6_qwapc")
+
+[node name="CAM5Selected" type="Sprite2D" parent="MonitorProgram"]
+visible = false
+z_index = 2
+texture_filter = 2
+position = Vector2(-1783.47, -196.957)
+scale = Vector2(1.00965, 1.00965)
+texture = ExtResource("7_typge")
+
+[node name="CAM6Selected" type="Sprite2D" parent="MonitorProgram"]
+visible = false
+z_index = 2
+texture_filter = 2
+position = Vector2(-1783.47, -59.0646)
+scale = Vector2(1.00965, 1.00965)
+texture = ExtResource("8_m5q1s")
 
 [node name="Cam1Btn" type="Button" parent="."]
-offset_left = 43.0
-offset_top = 115.0
-offset_right = 222.0
-offset_bottom = 156.0
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+offset_left = 50.0
+offset_top = 108.0
+offset_right = 207.0
+offset_bottom = 144.0
 text = "Cam1"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
 
 [node name="Cam2Btn" type="Button" parent="."]
-offset_left = 43.0
-offset_top = 162.0
-offset_right = 222.0
-offset_bottom = 203.0
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+offset_left = 50.0
+offset_top = 146.0
+offset_right = 207.0
+offset_bottom = 182.0
 text = "Cam2"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
 
 [node name="Cam3Btn" type="Button" parent="."]
-offset_left = 43.0
-offset_top = 208.0
-offset_right = 222.0
-offset_bottom = 249.0
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+offset_left = 50.0
+offset_top = 183.0
+offset_right = 207.0
+offset_bottom = 219.0
 text = "Cam3"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
 
 [node name="Cam4Btn" type="Button" parent="."]
-offset_left = 43.0
-offset_top = 254.0
-offset_right = 222.0
-offset_bottom = 295.0
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+offset_left = 50.0
+offset_top = 220.0
+offset_right = 207.0
+offset_bottom = 256.0
 text = "Cam4"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
 
 [node name="Cam5Btn" type="Button" parent="."]
-offset_left = 43.0
-offset_top = 299.0
-offset_right = 222.0
-offset_bottom = 340.0
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+offset_left = 50.0
+offset_top = 258.0
+offset_right = 207.0
+offset_bottom = 294.0
 text = "Cam5"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
 
 [node name="Cam6Btn" type="Button" parent="."]
-offset_left = 43.0
-offset_top = 344.0
-offset_right = 222.0
-offset_bottom = 385.0
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+offset_left = 50.0
+offset_top = 296.0
+offset_right = 207.0
+offset_bottom = 332.0
 text = "Cam6"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
@@ -185,8 +275,18 @@ libraries = {
 autoplay = "float"
 speed_scale = 0.2
 
+[node name="TextureRect2" type="ColorRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_gbo4c")
+offset_left = 240.0
+offset_top = 79.0
+offset_right = 990.0
+offset_bottom = 524.0
+
 [connection signal="button_down" from="Cam1Btn" to="." method="OnCam1BtnPressed"]
+[connection signal="button_down" from="Cam2Btn" to="." method="OnCam2BtnPressed"]
 [connection signal="button_down" from="Cam3Btn" to="." method="OnCam3BtnPressed"]
+[connection signal="button_down" from="Cam4Btn" to="." method="OnCam4BtnPressed"]
 [connection signal="button_down" from="Cam5Btn" to="." method="OnCam5BtnPressed"]
 [connection signal="button_down" from="Cam6Btn" to="." method="OnCam6BtnPressed"]
 [connection signal="animation_finished" from="LoadingAnim/AnimationPlayer" to="." method="OnLoadingAnimFin"]

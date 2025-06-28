@@ -33,12 +33,18 @@ extends Node2D
 @onready var ogCam4Btn: Button = $Cam4Btn
 @onready var ogCam5Btn: Button = $Cam5Btn
 @onready var ogCam6Btn: Button = $Cam6Btn
+@onready var ogCam1Selected: Sprite2D = $MonitorProgram/CAM1Selected
+@onready var ogCam2Selected: Sprite2D = $MonitorProgram/CAM2Selected
+@onready var ogCam3Selected: Sprite2D = $MonitorProgram/CAM3Selected
+@onready var ogCam4Selected: Sprite2D = $MonitorProgram/CAM4Selected
+@onready var ogCam5Selected: Sprite2D = $MonitorProgram/CAM5Selected
+@onready var ogCam6Selected: Sprite2D = $MonitorProgram/CAM6Selected
 
 @onready var ogCameraView2D: AnimationPlayer = $SubViewport/StageCam/CameraView/AnimationPlayer
 @onready var ogLoadingAnim: Sprite2D = $LoadingAnim
 @onready var ogLoadingAnimPlayer: AnimationPlayer = $LoadingAnim/AnimationPlayer
 
-const CAM_1: StringName = ""
+const CAM_1: StringName = "kitchen"
 const CAM_2: StringName = ""
 const CAM_3: StringName = "stage"
 const CAM_4: StringName = ""
@@ -47,6 +53,15 @@ const CAM_6: StringName = "washroom"
 
 var gsCamera2DName: StringName = CAM_3
 var gbAnimFin: bool = false
+
+func hideAllCamSelected():
+	ogCam1Selected.visible = false
+	ogCam2Selected.visible = false
+	ogCam3Selected.visible = false
+	ogCam4Selected.visible = false
+	ogCam5Selected.visible = false
+	ogCam6Selected.visible = false
+	pass
 
 func disableAllCamBtns():
 	ogCam1Btn.disabled = true
@@ -87,8 +102,15 @@ func switchToBackroom():
 	ogCameraView2D.play("backroom")
 	pass
 
+func switchToKitchen():
+	ogCameraView2D.play("kitchen")
+	pass
+
 func processingCamera2D():
 	match gsCamera2DName:
+		CAM_1:
+			switchToKitchen()
+			pass
 		CAM_3:
 			switchToStage()
 			pass
@@ -102,12 +124,25 @@ func processingCamera2D():
 			pass
 
 func OnCam1BtnPressed():
+	hideAllCamSelected()
+	ogCam1Selected.visible = true
+	if gsCamera2DName != CAM_1:
+		gsCamera2DName = CAM_1
+		ogLoadingAnim.visible = true
+		ogLoadingAnimPlayer.play("spin")
+		ogCameraView2D.pause()
+		disableAllCamBtns()
+	pass
 	pass
 
 func OnCam2BtnPressed():
+	hideAllCamSelected()
+	ogCam2Selected.visible = true
 	pass
 
 func OnCam3BtnPressed():
+	hideAllCamSelected()
+	ogCam3Selected.visible = true
 	if gsCamera2DName != CAM_3:
 		gsCamera2DName = CAM_3
 		ogLoadingAnim.visible = true
@@ -117,9 +152,13 @@ func OnCam3BtnPressed():
 	pass
 
 func OnCam4BtnPressed():
+	hideAllCamSelected()
+	ogCam4Selected.visible = true
 	pass
 
 func OnCam5BtnPressed():
+	hideAllCamSelected()
+	ogCam5Selected.visible = true
 	if gsCamera2DName != CAM_5:
 		gsCamera2DName = CAM_5
 		ogLoadingAnim.visible = true
@@ -129,6 +168,8 @@ func OnCam5BtnPressed():
 	pass
 
 func OnCam6BtnPressed():
+	hideAllCamSelected()
+	ogCam6Selected.visible = true
 	if gsCamera2DName != CAM_6:
 		gsCamera2DName = CAM_6
 		ogLoadingAnim.visible = true
