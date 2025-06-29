@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://br7k5dtujv5sq"]
+[gd_scene load_steps=15 format=3 uid="uid://br7k5dtujv5sq"]
 
 [ext_resource type="Texture2D" uid="uid://crv6bws1ugjc5" path="res://Texture/CamView/StageRoomInitial_downscaled_2x.png" id="1_gihwh"]
 [ext_resource type="Texture2D" uid="uid://cd001qv75xsve" path="res://Texture/CamView/WashRoom.png" id="2_pockd"]
 [ext_resource type="Texture2D" uid="uid://dlyaq3pwr50bk" path="res://Texture/CamView/BackRoomInitial-Ver3-2025-6-27_downscaled_1x.png" id="3_mwpq3"]
-[ext_resource type="Texture2D" uid="uid://n2d6llimpr13" path="res://Texture/CamView/KitchenRoomInitial-Ver1-2025-6-28_downscaled_1x.png" id="4_uieis"]
+[ext_resource type="Texture2D" uid="uid://dlskxn182gl8g" path="res://Texture/CamView/KitchenRoomInitial-Ver3-2025-6-29_downscaled_2x.png" id="4_qd11y"]
+[ext_resource type="Texture2D" uid="uid://cvys4utdt5rdm" path="res://Texture/CamView/OfficeRoomInitial-Ver2-2025-6-29_downscaled_2x.png" id="5_fiay8"]
 [ext_resource type="Shader" uid="uid://dg1qsb7hw0vdk" path="res://Shader/panorama.gdshader" id="5_qd11y"]
 
 [sub_resource type="Animation" id="Animation_oi1ss"]
@@ -55,6 +56,59 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_uieis"]
+resource_name = "backroom"
+length = 2.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(190, 278), Vector2(570, 278), Vector2(570, 278), Vector2(190, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_mwpq3")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.22, 0.22)]
 }
 
 [sub_resource type="Animation" id="Animation_07k7h"]
@@ -163,9 +217,9 @@ tracks/3/keys = {
 "values": [Vector2(0.265, 0.265)]
 }
 
-[sub_resource type="Animation" id="Animation_uieis"]
-resource_name = "backroom"
-length = 2.8
+[sub_resource type="Animation" id="Animation_oj8gw"]
+resource_name = "kitchen"
+length = 1.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -186,10 +240,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.4, 2.6),
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(190, 278), Vector2(570, 278), Vector2(570, 278), Vector2(190, 278)]
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -201,7 +255,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_mwpq3")]
+"values": [ExtResource("4_qd11y")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -213,12 +267,12 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.22, 0.22)]
+"values": [Vector2(0.265, 0.265)]
 }
 
-[sub_resource type="Animation" id="Animation_qd11y"]
-resource_name = "kitchen"
-length = 2.8
+[sub_resource type="Animation" id="Animation_k8avt"]
+resource_name = "office"
+length = 1.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -239,10 +293,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.4, 2.6),
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(190, 278), Vector2(570, 278), Vector2(570, 278), Vector2(190, 278)]
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -254,7 +308,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_uieis")]
+"values": [ExtResource("5_fiay8")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -266,14 +320,15 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.22, 0.22)]
+"values": [Vector2(0.265, 0.265)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_06vsj"]
 _data = {
 &"RESET": SubResource("Animation_oi1ss"),
 &"backroom": SubResource("Animation_uieis"),
-&"kitchen": SubResource("Animation_qd11y"),
+&"kitchen": SubResource("Animation_oj8gw"),
+&"office": SubResource("Animation_k8avt"),
 &"stage": SubResource("Animation_07k7h"),
 &"washroom": SubResource("Animation_06vsj")
 }

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="fnaw3d"
-run/main_scene="res://main_scene.tscn"
+run/main_scene="uid://cg2fc0e84nbgc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Res/icon.svg"
+
+[autoload]
+
+SceneMan="*res://Script/scene_man.gd"
 
 [display]
 

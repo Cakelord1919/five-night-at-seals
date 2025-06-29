@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqigk1dl15sip"]
+
+[ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_mggpi"]
+
+[sub_resource type="Animation" id="Animation_htrc2"]
+resource_name = "loading"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_weff3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fgney"]
+_data = {
+&"RESET": SubResource("Animation_weff3"),
+&"loading": SubResource("Animation_htrc2")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="loading" type="Sprite2D" parent="."]
+position = Vector2(1103, 597)
+rotation = 6.28319
+scale = Vector2(0.585938, 0.585938)
+texture = ExtResource("1_mggpi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="loading"]
+libraries = {
+&"": SubResource("AnimationLibrary_fgney")
+}
+autoplay = "loading"

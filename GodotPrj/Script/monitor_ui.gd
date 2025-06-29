@@ -39,20 +39,30 @@ extends Node2D
 @onready var ogCam4Selected: Sprite2D = $MonitorProgram/CAM4Selected
 @onready var ogCam5Selected: Sprite2D = $MonitorProgram/CAM5Selected
 @onready var ogCam6Selected: Sprite2D = $MonitorProgram/CAM6Selected
+@onready var ogTextureRect: ColorRect = $TextureRect2
 
 @onready var ogCameraView2D: AnimationPlayer = $SubViewport/StageCam/CameraView/AnimationPlayer
 @onready var ogLoadingAnim: Sprite2D = $LoadingAnim
 @onready var ogLoadingAnimPlayer: AnimationPlayer = $LoadingAnim/AnimationPlayer
 
 const CAM_1: StringName = "kitchen"
-const CAM_2: StringName = ""
+const CAM_2: StringName = "office"
 const CAM_3: StringName = "stage"
-const CAM_4: StringName = ""
+const CAM_4: StringName = "storage"
 const CAM_5: StringName = "backroom"
 const CAM_6: StringName = "washroom"
+const ROLL_SPEED_ZERO = 0.0
+const ROLL_SPEED_DEFAULT = 2.0
+const ROLL_SIZE_ZERO = 0.0
+const ROLL_SIZE_DEFAULT = 15.0
 
 var gsCamera2DName: StringName = CAM_3
 var gbAnimFin: bool = false
+
+func modifyShader(fRollSize: float):
+	var gShaderCRT: ShaderMaterial = ogTextureRect.material
+	gShaderCRT.set_shader_parameter("roll_size", fRollSize)
+	pass
 
 func hideAllCamSelected():
 	ogCam1Selected.visible = false
@@ -106,10 +116,18 @@ func switchToKitchen():
 	ogCameraView2D.play("kitchen")
 	pass
 
+func switchToOffice():
+	ogCameraView2D.play("office")
+	pass
+
+
 func processingCamera2D():
 	match gsCamera2DName:
 		CAM_1:
 			switchToKitchen()
+			pass
+		CAM_2:
+			switchToOffice()
 			pass
 		CAM_3:
 			switchToStage()
@@ -138,6 +156,13 @@ func OnCam1BtnPressed():
 func OnCam2BtnPressed():
 	hideAllCamSelected()
 	ogCam2Selected.visible = true
+	if gsCamera2DName != CAM_2:
+		gsCamera2DName = CAM_2
+		ogLoadingAnim.visible = true
+		ogLoadingAnimPlayer.play("spin")
+		ogCameraView2D.pause()
+		disableAllCamBtns()
+	pass
 	pass
 
 func OnCam3BtnPressed():
@@ -183,4 +208,6 @@ func OnLoadingAnimFin(anim: StringName):
 		enableAllCamBtns()
 		ogLoadingAnim.visible = false
 		processingCamera2D()
+		var fRandomShaderSizeFactor = randf_range(0.0, 100.0)
+		modifyShader(fRandomShaderSizeFactor)
 	pass
