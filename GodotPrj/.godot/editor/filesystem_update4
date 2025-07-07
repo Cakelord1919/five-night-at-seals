@@ -1,3 +1,4 @@
 res://main_scene.tscn
 res://SubScenes/doors_btn_left.tscn
 res://SubScenes/doors_btn_right.tscn
+res://SubScenes/monitor_room_sphere.tscn
