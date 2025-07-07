@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://tgw7ajvfcoyv"]
 
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_n0ddm"]
-[ext_resource type="Script" path="res://Script/script_director.gd" id="2_dc0yv"]
+[ext_resource type="Script" uid="uid://de1ja24qwsuwn" path="res://Script/script_director.gd" id="2_dc0yv"]
 [ext_resource type="PackedScene" uid="uid://b0qikit328i7c" path="res://SubScenes/monitor_ui.tscn" id="3_671wp"]
 [ext_resource type="PackedScene" uid="uid://cf5777qxo87lq" path="res://SubScenes/monitor_room_sphere.tscn" id="3_h8xch"]
 [ext_resource type="PackedScene" uid="uid://4u57eo1c00vb" path="res://SubScenes/right_door_mesh_3d.tscn" id="4_0myca"]
@@ -110,10 +110,10 @@ transform = Transform3D(1, 1.50996e-07, -1.50996e-07, -1.50996e-07, 1, -7.6233e-
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.01, 0, 0.035)
 
 [node name="LeftHallLightSwitch" parent="." instance=ExtResource("10_qwutr")]
-transform = Transform3D(-8.74228e-09, 0.00942286, -0.199878, 0, 0.269836, 0.0069799, 0.2, 4.11886e-10, -8.73695e-09, 0.349292, -0.0409213, 0.264055)
+transform = Transform3D(-0.0123073, -0.0087383, -0.199516, 0.00205349, 0.269839, -0.00661127, 0.19961, -0.00331474, -0.0122335, 0.533747, -0.0423633, 0.336623)
 
 [node name="RightHallLightSwitch" parent="." instance=ExtResource("11_671wp")]
-transform = Transform3D(-8.74228e-09, -0.00942286, 0.199878, 0, 0.269836, 0.0069799, -0.2, 4.11886e-10, -8.73695e-09, -0.349, -0.041, 0.264)
+transform = Transform3D(-0.0122784, -0.00876212, -0.199517, 0.00209321, 0.269837, -0.00663103, 0.199612, -0.00336858, -0.012203, -0.534, -0.042, 0.337)
 
 [connection signal="button_down" from="Control/btnLeft" to="Control/scriptDirector" method="OnBtnLeftPressed"]
 [connection signal="button_up" from="Control/btnLeft" to="Control/scriptDirector" method="OnBtnLeftRelease"]

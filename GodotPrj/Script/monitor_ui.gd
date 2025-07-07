@@ -59,10 +59,15 @@ const ROLL_SIZE_DEFAULT = 15.0
 var gsCamera2DName: StringName = CAM_3
 var gbAnimFin: bool = false
 
+func pauseShader(bRollStat: bool):
+	var gShaderCRT: ShaderMaterial = ogTextureRect.material
+	gShaderCRT.set_shader_parameter("roll", bRollStat)
+	return
+
 func modifyShader(fRollSize: float):
 	var gShaderCRT: ShaderMaterial = ogTextureRect.material
 	gShaderCRT.set_shader_parameter("roll_size", fRollSize)
-	pass
+	return
 
 func hideAllCamSelected():
 	ogCam1Selected.visible = false
@@ -71,7 +76,7 @@ func hideAllCamSelected():
 	ogCam4Selected.visible = false
 	ogCam5Selected.visible = false
 	ogCam6Selected.visible = false
-	pass
+	return
 
 func disableAllCamBtns():
 	ogCam1Btn.disabled = true
@@ -80,7 +85,7 @@ func disableAllCamBtns():
 	ogCam4Btn.disabled = true
 	ogCam5Btn.disabled = true
 	ogCam6Btn.disabled = true	
-	pass
+	return
 
 func enableAllCamBtns():
 	ogCam1Btn.disabled = false
@@ -98,48 +103,48 @@ func enableAllCamBtns():
 	ogCam4Btn.grab_focus()
 	ogCam5Btn.grab_focus()
 	ogCam6Btn.grab_focus()
-	pass
+	return
 
 func switchToStage():
 	ogCameraView2D.play("stage")
-	pass
+	return
 
 func switchToWashroom():
 	ogCameraView2D.play("washroom")
-	pass
+	return
 
 func switchToBackroom():
 	ogCameraView2D.play("backroom")
-	pass
+	return
 
 func switchToKitchen():
 	ogCameraView2D.play("kitchen")
-	pass
+	return
 
 func switchToOffice():
 	ogCameraView2D.play("office")
-	pass
+	return
 
 
 func processingCamera2D():
 	match gsCamera2DName:
 		CAM_1:
 			switchToKitchen()
-			pass
+			return
 		CAM_2:
 			switchToOffice()
-			pass
+			return
 		CAM_3:
 			switchToStage()
-			pass
+			return
 		CAM_5:
 			switchToBackroom()
-			pass
+			return
 		CAM_6:
 			switchToWashroom()
-			pass
+			return
 		"_":
-			pass
+			return
 
 func OnCam1BtnPressed():
 	hideAllCamSelected()
@@ -150,8 +155,8 @@ func OnCam1BtnPressed():
 		ogLoadingAnimPlayer.play("spin")
 		ogCameraView2D.pause()
 		disableAllCamBtns()
-	pass
-	pass
+		pauseShader(false)
+	return
 
 func OnCam2BtnPressed():
 	hideAllCamSelected()
@@ -162,8 +167,8 @@ func OnCam2BtnPressed():
 		ogLoadingAnimPlayer.play("spin")
 		ogCameraView2D.pause()
 		disableAllCamBtns()
-	pass
-	pass
+		pauseShader(false)
+	return
 
 func OnCam3BtnPressed():
 	hideAllCamSelected()
@@ -174,12 +179,13 @@ func OnCam3BtnPressed():
 		ogLoadingAnimPlayer.play("spin")
 		ogCameraView2D.pause()
 		disableAllCamBtns()
-	pass
+		pauseShader(false)
+	return
 
 func OnCam4BtnPressed():
 	hideAllCamSelected()
 	ogCam4Selected.visible = true
-	pass
+	return
 
 func OnCam5BtnPressed():
 	hideAllCamSelected()
@@ -190,7 +196,8 @@ func OnCam5BtnPressed():
 		ogLoadingAnimPlayer.play("spin")
 		ogCameraView2D.pause()
 		disableAllCamBtns()
-	pass
+		pauseShader(false)
+	return
 
 func OnCam6BtnPressed():
 	hideAllCamSelected()
@@ -201,7 +208,8 @@ func OnCam6BtnPressed():
 		ogLoadingAnimPlayer.play("spin")
 		ogCameraView2D.pause()
 		disableAllCamBtns()
-	pass
+		pauseShader(false)
+	return
 
 func OnLoadingAnimFin(anim: StringName):
 	if anim == "spin":
@@ -210,4 +218,5 @@ func OnLoadingAnimFin(anim: StringName):
 		processingCamera2D()
 		var fRandomShaderSizeFactor = randf_range(0.0, 100.0)
 		modifyShader(fRandomShaderSizeFactor)
-	pass
+		pauseShader(true)
+	return

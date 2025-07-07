@@ -5,4 +5,4 @@ signal door_3d_button_was_pressed
 
 func OnDoorBtn3DPressed():
 	emit_signal("door_3d_button_was_pressed")
-	pass
+	return

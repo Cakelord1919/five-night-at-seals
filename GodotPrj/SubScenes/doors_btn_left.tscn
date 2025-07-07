@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cdlfwhbihaocp"]
 
 [ext_resource type="PackedScene" uid="uid://beu6xphvkw87f" path="res://SubScenes/doors_btn_2d_subview.tscn" id="1_jpngi"]
-[ext_resource type="Script" path="res://Script/doors_btn_left.gd" id="1_ux05m"]
+[ext_resource type="Script" uid="uid://d0ofikbag7gqi" path="res://Script/doors_btn_left.gd" id="1_ux05m"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_dqrt3"]
 

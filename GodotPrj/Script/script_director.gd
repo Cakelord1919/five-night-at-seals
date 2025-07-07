@@ -98,7 +98,7 @@ func _process(delta: float) -> void:
 	ProcessingCameraAngle()
 	ProcessingCameraReset()
 	#print(gbCheckCom)
-	pass
+	return
 
 '''
 #########################################
@@ -112,7 +112,7 @@ func moveCameraLeft():
 		moveCameraAngle(ROTATION_SPEED)
 	else:
 		gwRotationTimes = ROTATION_OFFSET
-	pass
+	return
 
 func moveCameraRight():
 	if(gwRotationTimes > -ROTATION_OFFSET):
@@ -120,11 +120,11 @@ func moveCameraRight():
 		moveCameraAngle(-ROTATION_SPEED)
 	else:
 		gwRotationTimes = -ROTATION_OFFSET
-	pass
+	return
 
 func moveCameraAngle(angle: float):
 	ogCamera3D.rotate_y(angle)
-	pass
+	return
 
 func disableAllBtns():
 	ogMonBtn.disabled = true
@@ -132,7 +132,7 @@ func disableAllBtns():
 	ogTurnLeftBtn.disabled = true
 	ogTurnRightBtn.disabled = true
 	#print("All buttons disabled")
-	pass
+	return
 
 func enableAllBtns():
 	ogMonBtn.disabled = false
@@ -147,34 +147,34 @@ func enableAllBtns():
 	ogTurnLeftBtn.grab_focus()
 	ogTurnRightBtn.grab_focus()
 	#print("All buttons enabled")
-	pass
+	return
 
 func disableAllBtns3D():
 	ogDoorsBtnLeft3D.disabled = true
 	ogDoorsBtnRight3D.disabled = true
-	pass
+	return
 
 func enableAllBtns3D():
 	ogDoorsBtnLeft3D.disabled = false
 	ogDoorsBtnRight3D.disabled = false
 	ogDoorsBtnLeft3D.grab_focus()
 	ogDoorsBtnRight3D.grab_focus()
-	pass
+	return
 
 func cameraReset():
 	disableAllBtns()
 	if gwRotationTimes < 0:
 		gwRotationTimes += 1
 		moveCameraAngle(ROTATION_SPEED)
-		pass
+		return
 	if gwRotationTimes > 0:
 		gwRotationTimes -= 1
 		moveCameraAngle(-ROTATION_SPEED)
-		pass
+		return
 	if gwRotationTimes == 0:
 		gbResetCam = 0
 		processingComAnim()
-		pass
+		return
 
 func processingComAnim():
 	if gbCheckCom:
@@ -187,7 +187,7 @@ func processingComAnim():
 		#ogCamera3D.fov = 55.0
 		okgUITransistion.play("fly_down")
 		#okgComAnim.play("back")
-	pass
+	return
 
 func processingDoorLeftAnim():
 	disableAllBtns3D()
@@ -195,7 +195,7 @@ func processingDoorLeftAnim():
 		okgDoorLeftAnim.play("down")
 	else:
 		okgDoorLeftAnim.play("lift")
-	pass
+	return
 
 func processingDoorRightAnim():
 	disableAllBtns3D()
@@ -203,25 +203,25 @@ func processingDoorRightAnim():
 		okgDoorRightAnim.play("down")
 	else:
 		okgDoorRightAnim.play("lift")
-	pass
+	return
 
 func disableLeftLight():
 	ogHallLeftLight3DBtn.disabled = true
-	pass
+	return
 
 func enableLeftLight():
 	ogHallLeftLight3DBtn.disabled = false
 	ogHallLeftLight3DBtn.grab_focus()
-	pass
+	return
 
 func disableRightLight():
 	ogHallRightLight3DBtn.disabled = true
-	pass
+	return
 
 func enableRightLight():
 	ogHallRightLight3DBtn.disabled = false
 	ogHallRightLight3DBtn.grab_focus()
-	pass
+	return
 
 '''
 #########################################
@@ -230,19 +230,19 @@ func enableRightLight():
 '''
 func OnBtnLeftPressed():
 	gwRotationArrow = 1
-	pass
+	return
 
 func OnBtnRightPressed():
 	gwRotationArrow = -1
-	pass
+	return
 
 func OnBtnLeftRelease():
 	gwRotationArrow = 0
-	pass
+	return
 
 func OnBtnRightRelease():
 	gwRotationArrow = 0
-	pass
+	return
 
 func OnDoorLeftBtn3DPressed():
 	gbDoorLeftStat = !gbDoorLeftStat
@@ -250,7 +250,7 @@ func OnDoorLeftBtn3DPressed():
 	if gbDoorLeftStat:
 		disableLeftLight()
 	processingDoorLeftAnim()
-	pass
+	return
 
 func OnDoorRightBtn3DPressed():
 	gbDoorRightStat = !gbDoorRightStat
@@ -258,17 +258,17 @@ func OnDoorRightBtn3DPressed():
 	if gbDoorRightStat:
 		disableRightLight()
 	processingDoorRightAnim()
-	pass
+	return
 
 func OnLightSwitchLeft3DPressed():
 	#Left Lights on
 	okgHallLeftAnim.play("light")
-	pass
+	return
 
 func OnLightSwitchRight3DPressed():
 	#Right Lights on
 	okgHallRightAnim.play("light")
-	pass
+	return
 
 func OnLightSwitchLeft3DReleased():
 	#Left Lights off
@@ -280,7 +280,7 @@ func OnLightSwitchLeft3DReleased():
 	# engine to reload it and reset its all property.
 	ogHallLeftLight3DBtn.visible = false
 	ogHallLeftLight3DBtn.visible = true
-	pass
+	return
 
 func OnLightSwitchRight3DReleased():
 	#Right Lights off
@@ -292,12 +292,12 @@ func OnLightSwitchRight3DReleased():
 	# engine to reload it and reset its all property.
 	ogHallRightLight3DBtn.visible = false
 	ogHallRightLight3DBtn.visible = true
-	pass
+	return
 
 func OnCheckComPressed():
 	gbCheckCom = !gbCheckCom
 	gbResetCam = 1
-	pass
+	return
 
 func ComAnimFin(anim_name: StringName) -> void:
 	if anim_name == "forward":
@@ -310,7 +310,7 @@ func ComAnimFin(anim_name: StringName) -> void:
 		ogTurnRightBtn.visible = true
 		ogMapBtn.visible = false
 		enableAllBtns()
-	pass # Replace with function body.
+	return # Replace with function body.
 
 func DoorLeftAnimFin(anim_name: StringName) -> void:
 	if anim_name == "lift":
@@ -319,7 +319,7 @@ func DoorLeftAnimFin(anim_name: StringName) -> void:
 		enableLeftLight()
 	if anim_name == "down":
 		enableAllBtns3D()
-	pass # Replace with function body.
+	return # Replace with function body.
 
 func DoorRightAnimFin(anim_name: StringName) -> void:
 	if anim_name == "lift":
@@ -328,19 +328,19 @@ func DoorRightAnimFin(anim_name: StringName) -> void:
 		enableRightLight()
 	if anim_name == "down":
 		enableAllBtns3D()
-	pass # Replace with function body.
+	return # Replace with function body.
 
 func ProcessingCameraAngle():
 	if gwRotationArrow > 0:
 		moveCameraLeft()
 	elif gwRotationArrow < 0:
 		moveCameraRight()
-	pass
+	return
 
 func ProcessingCameraReset():
 	if gbResetCam:
 		cameraReset()
-	pass
+	return
 
 func AnimationUIFin(anim_name: StringName):
 	if anim_name == "fly_up":
@@ -348,4 +348,4 @@ func AnimationUIFin(anim_name: StringName):
 	elif anim_name == "fly_down":
 		ogMonitorUI.visible = false
 		okgComAnim.play("back")
-	pass
+	return

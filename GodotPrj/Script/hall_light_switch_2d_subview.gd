@@ -9,11 +9,11 @@ signal door_light_switch_released
 
 func OnLightSwitchBtn3DPressed():
 	emit_signal("door_light_switch_pressed")
-	pass
+	return
 
 func OnLightSwitchBtn3DReleased():
 	emit_signal("door_light_switch_released")
-	pass
+	return
 
 '''
 func _process(delta: float):
