@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0qikit328i7c"]
+[gd_scene load_steps=23 format=3 uid="uid://b0qikit328i7c"]
 
 [ext_resource type="Script" uid="uid://igg55oep1ge7" path="res://Script/monitor_ui.gd" id="1_pnies"]
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="2_3xoc5"]
-[ext_resource type="Texture2D" uid="uid://bno00sjfg16ih" path="res://Texture/UI/monitorUI_v0.62.png" id="2_cw4ec"]
+[ext_resource type="Texture2D" uid="uid://dkdaftm76xvif" path="res://Texture/UI/monitorUI.png" id="2_cw4ec"]
 [ext_resource type="Texture2D" uid="uid://b0suuxj82rfw6" path="res://Texture/UI/selected_cam1.png" id="3_4kpv2"]
 [ext_resource type="PackedScene" uid="uid://br7k5dtujv5sq" path="res://SubScenes/CameraViews/security_cam.tscn" id="3_pnies"]
 [ext_resource type="Texture2D" uid="uid://c0yd30vfdr7pc" path="res://Texture/UI/selected_cam2.png" id="4_u6uuf"]
@@ -12,6 +12,8 @@
 [ext_resource type="Shader" uid="uid://djhxwmrwigvp3" path="res://Shader/camera_crt.gdshader" id="7_5dk0d"]
 [ext_resource type="Texture2D" uid="uid://76i688np1ysg" path="res://Texture/UI/selected_cam5.png" id="7_typge"]
 [ext_resource type="Texture2D" uid="uid://cmb6lfxc8yaxu" path="res://Texture/UI/selected_cam6.png" id="8_m5q1s"]
+[ext_resource type="Texture2D" uid="uid://ctaf30i8tr13x" path="res://Texture/UI/selected_cam7.png" id="9_u6uuf"]
+[ext_resource type="Texture2D" uid="uid://2yewg5f8nskf" path="res://Texture/UI/selected_cam8.png" id="10_uxqhc"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3xoc5"]
 viewport_path = NodePath("SubViewport")
@@ -142,7 +144,7 @@ texture = ExtResource("4_u6uuf")
 [node name="CAM3Selected" type="Sprite2D" parent="MonitorProgram"]
 z_index = 2
 texture_filter = 2
-position = Vector2(-1783.47, -483.921)
+position = Vector2(-1783.47, -495.101)
 scale = Vector2(1.00965, 1.00965)
 texture = ExtResource("5_uxqhc")
 
@@ -150,7 +152,7 @@ texture = ExtResource("5_uxqhc")
 visible = false
 z_index = 2
 texture_filter = 2
-position = Vector2(-1783.47, -342.302)
+position = Vector2(-1783.47, -368.39)
 scale = Vector2(1.00965, 1.00965)
 texture = ExtResource("6_qwapc")
 
@@ -158,7 +160,7 @@ texture = ExtResource("6_qwapc")
 visible = false
 z_index = 2
 texture_filter = 2
-position = Vector2(-1783.47, -196.957)
+position = Vector2(-1783.47, -234.225)
 scale = Vector2(1.00965, 1.00965)
 texture = ExtResource("7_typge")
 
@@ -166,17 +168,33 @@ texture = ExtResource("7_typge")
 visible = false
 z_index = 2
 texture_filter = 2
-position = Vector2(-1783.47, -59.0646)
+position = Vector2(-1783.47, -103.786)
 scale = Vector2(1.00965, 1.00965)
 texture = ExtResource("8_m5q1s")
+
+[node name="CAM7Selected" type="Sprite2D" parent="MonitorProgram"]
+visible = false
+z_index = 2
+texture_filter = 2
+position = Vector2(-1783.47, 30.3789)
+scale = Vector2(1.00965, 1.00965)
+texture = ExtResource("9_u6uuf")
+
+[node name="CAM8Selected" type="Sprite2D" parent="MonitorProgram"]
+visible = false
+z_index = 2
+texture_filter = 2
+position = Vector2(-1783.47, 160.817)
+scale = Vector2(1.00965, 1.00965)
+texture = ExtResource("10_uxqhc")
 
 [node name="Cam1Btn" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 4
 offset_left = 50.0
-offset_top = 108.0
+offset_top = 107.0
 offset_right = 207.0
-offset_bottom = 144.0
+offset_bottom = 143.0
 text = "Cam1"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
@@ -185,9 +203,9 @@ expand_icon = true
 modulate = Color(1, 1, 1, 0)
 z_index = 4
 offset_left = 50.0
-offset_top = 146.0
+offset_top = 143.0
 offset_right = 207.0
-offset_bottom = 182.0
+offset_bottom = 179.0
 text = "Cam2"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
@@ -196,9 +214,9 @@ expand_icon = true
 modulate = Color(1, 1, 1, 0)
 z_index = 4
 offset_left = 50.0
-offset_top = 183.0
+offset_top = 179.0
 offset_right = 207.0
-offset_bottom = 219.0
+offset_bottom = 215.0
 text = "Cam3"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
@@ -207,9 +225,9 @@ expand_icon = true
 modulate = Color(1, 1, 1, 0)
 z_index = 4
 offset_left = 50.0
-offset_top = 220.0
+offset_top = 215.0
 offset_right = 207.0
-offset_bottom = 256.0
+offset_bottom = 251.0
 text = "Cam4"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
@@ -218,9 +236,9 @@ expand_icon = true
 modulate = Color(1, 1, 1, 0)
 z_index = 4
 offset_left = 50.0
-offset_top = 258.0
+offset_top = 251.0
 offset_right = 207.0
-offset_bottom = 294.0
+offset_bottom = 287.0
 text = "Cam5"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
@@ -229,10 +247,32 @@ expand_icon = true
 modulate = Color(1, 1, 1, 0)
 z_index = 4
 offset_left = 50.0
-offset_top = 296.0
+offset_top = 287.0
 offset_right = 207.0
-offset_bottom = 332.0
+offset_bottom = 323.0
 text = "Cam6"
+icon = ExtResource("2_3xoc5")
+expand_icon = true
+
+[node name="Cam7Btn" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+offset_left = 50.0
+offset_top = 323.0
+offset_right = 207.0
+offset_bottom = 359.0
+text = "Cam7"
+icon = ExtResource("2_3xoc5")
+expand_icon = true
+
+[node name="Cam8Btn" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+offset_left = 50.0
+offset_top = 359.0
+offset_right = 207.0
+offset_bottom = 395.0
+text = "Cam8"
 icon = ExtResource("2_3xoc5")
 expand_icon = true
 
@@ -289,4 +329,6 @@ offset_bottom = 524.0
 [connection signal="button_down" from="Cam4Btn" to="." method="OnCam4BtnPressed"]
 [connection signal="button_down" from="Cam5Btn" to="." method="OnCam5BtnPressed"]
 [connection signal="button_down" from="Cam6Btn" to="." method="OnCam6BtnPressed"]
+[connection signal="button_down" from="Cam7Btn" to="." method="OnCam7BtnPressed"]
+[connection signal="button_down" from="Cam8Btn" to="." method="OnCam8BtnPressed"]
 [connection signal="animation_finished" from="LoadingAnim/AnimationPlayer" to="." method="OnLoadingAnimFin"]

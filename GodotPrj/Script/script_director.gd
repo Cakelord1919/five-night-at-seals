@@ -54,6 +54,8 @@ extends Node2D
 @export var okgHallLeftAnim: AnimationPlayer
 @export var okgHallRightAnim: AnimationPlayer
 @export var okgUITransistion: AnimationPlayer
+@onready var okgTimerForRNG: Timer = $"../EnemyAI/TimerForRNG"
+
 
 var gwRotationTimes = 0
 var gwRotationArrow = 0 #1 for left, -1 for right
@@ -90,7 +92,9 @@ func _ready() -> void:
 	ogHallRightLight3D.door_light_switch_pressed_processed.connect(OnLightSwitchRight3DPressed)
 	ogHallLeftLight3D.door_light_switch_released_processed.connect(OnLightSwitchLeft3DReleased)
 	ogHallRightLight3D.door_light_switch_released_processed.connect(OnLightSwitchRight3DReleased)
-	pass
+	
+	okgTimerForRNG.start()
+	return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -309,6 +313,7 @@ func ComAnimFin(anim_name: StringName) -> void:
 		ogTurnLeftBtn.visible = true
 		ogTurnRightBtn.visible = true
 		ogMapBtn.visible = false
+		okgComAnim.play("idle")
 		enableAllBtns()
 	return # Replace with function body.
 

@@ -1,17 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://cf5777qxo87lq"]
+[gd_scene load_steps=21 format=3 uid="uid://cf5777qxo87lq"]
 
 [ext_resource type="Texture2D" uid="uid://35mabc3gqnog" path="res://Texture/SecurityRoomInitial-Ver14-2025-7-7_downscaled_1x.png" id="1_clfwq"]
-[ext_resource type="Texture2D" uid="uid://b0q43tq0jaq7j" path="res://Texture/ComSequenceWithDesktop/001.png" id="13_soqwh"]
-[ext_resource type="Texture2D" uid="uid://c0s5uyb8aho2u" path="res://Texture/ComSequenceWithDesktop/002.png" id="14_0fgt4"]
-[ext_resource type="Texture2D" uid="uid://csmf7ioixgeg5" path="res://Texture/ComSequenceWithDesktop/003.png" id="15_l0ulq"]
-[ext_resource type="Texture2D" uid="uid://ddla74y8wljv8" path="res://Texture/ComSequenceWithDesktop/004.png" id="16_pb2q6"]
-[ext_resource type="Texture2D" uid="uid://cqgo71ue1llo6" path="res://Texture/ComSequenceWithDesktop/005.png" id="17_ii8px"]
-[ext_resource type="Texture2D" uid="uid://c3d3rj54yu264" path="res://Texture/ComSequenceWithDesktop/006.png" id="18_w3ngi"]
-[ext_resource type="Texture2D" uid="uid://bj4hbrge1opbx" path="res://Texture/ComSequenceWithDesktop/007.png" id="19_tnlvd"]
-[ext_resource type="Texture2D" uid="uid://b7q1c6mj6m4y5" path="res://Texture/ComSequenceWithDesktop/008.png" id="20_w1tt1"]
-[ext_resource type="Texture2D" uid="uid://dmv4ytft1awhi" path="res://Texture/ComSequenceWithDesktop/009.png" id="21_dn1so"]
-[ext_resource type="Texture2D" uid="uid://o0w4g4qx1u68" path="res://Texture/ComSequenceWithDesktop/010.png" id="22_gkdad"]
-[ext_resource type="Texture2D" uid="uid://boqokel8408hu" path="res://Texture/ComSequenceWithDesktop/011.png" id="23_eacpo"]
+[ext_resource type="Texture2D" uid="uid://ckgvrbaf4h6ym" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100011_downscaled_1x.png" id="2_t8xsw"]
+[ext_resource type="Texture2D" uid="uid://cvcqvikxm6128" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100010_downscaled_1x.png" id="3_3ckxq"]
+[ext_resource type="Texture2D" uid="uid://d11201pn0ddx4" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100009_downscaled_1x.png" id="4_y0gwu"]
+[ext_resource type="Texture2D" uid="uid://brann7vxecr53" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100008_downscaled_1x.png" id="5_qklqw"]
+[ext_resource type="Texture2D" uid="uid://dwt3o7rc3s02o" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100007_downscaled_1x.png" id="6_6kkcr"]
+[ext_resource type="Texture2D" uid="uid://c8j8ya507axio" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100006_downscaled_1x.png" id="7_0lvl8"]
+[ext_resource type="Texture2D" uid="uid://cll00bg8qsj2y" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100005_downscaled_1x.png" id="8_bdn67"]
+[ext_resource type="Texture2D" uid="uid://ens0enxm0tnb" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100004_downscaled_1x.png" id="9_gk1qd"]
+[ext_resource type="Texture2D" uid="uid://cmp2cm2b7f33m" path="res://Texture/ComSeqV3/SecurityRoomInitialToComputerSequence-Ver12-2025-9-100003_downscaled_1x.png" id="10_hpmh4"]
+[ext_resource type="Texture2D" uid="uid://lnt8d1x1agtg" path="res://Texture/IdleSequenceV2/SecurityRoomWithFanRollingSequence-Ver2-2025-9-10.png0030_downscaled_1x.png" id="17_bdn67"]
+[ext_resource type="Texture2D" uid="uid://i5oryy4twc6q" path="res://Texture/IdleSequenceV2/SecurityRoomWithFanRollingSequence-Ver2-2025-9-10.png0031_downscaled_1x.png" id="18_gk1qd"]
+[ext_resource type="Texture2D" uid="uid://bhdha4ypui2s3" path="res://Texture/IdleSequenceV2/SecurityRoomWithFanRollingSequence-Ver2-2025-9-10.png0032_downscaled_1x.png" id="19_hpmh4"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_l2j4c"]
 flip_faces = true
@@ -40,6 +41,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6myaw"]
 resource_name = "back"
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,14 +49,15 @@ tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("23_eacpo"), ExtResource("22_gkdad"), ExtResource("21_dn1so"), ExtResource("20_w1tt1"), ExtResource("19_tnlvd"), ExtResource("18_w3ngi"), ExtResource("17_ii8px"), ExtResource("16_pb2q6"), ExtResource("15_l0ulq"), ExtResource("14_0fgt4"), ExtResource("13_soqwh")]
+"values": [ExtResource("2_t8xsw"), ExtResource("3_3ckxq"), ExtResource("4_y0gwu"), ExtResource("5_qklqw"), ExtResource("6_6kkcr"), ExtResource("7_0lvl8"), ExtResource("8_bdn67"), ExtResource("9_gk1qd"), ExtResource("10_hpmh4")]
 }
 
 [sub_resource type="Animation" id="Animation_lj4gy"]
 resource_name = "forward"
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,17 +65,35 @@ tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("13_soqwh"), ExtResource("14_0fgt4"), ExtResource("15_l0ulq"), ExtResource("16_pb2q6"), ExtResource("17_ii8px"), ExtResource("18_w3ngi"), ExtResource("19_tnlvd"), ExtResource("20_w1tt1"), ExtResource("21_dn1so"), ExtResource("22_gkdad"), ExtResource("23_eacpo")]
+"values": [ExtResource("10_hpmh4"), ExtResource("9_gk1qd"), ExtResource("8_bdn67"), ExtResource("7_0lvl8"), ExtResource("6_6kkcr"), ExtResource("5_qklqw"), ExtResource("4_y0gwu"), ExtResource("3_3ckxq"), ExtResource("2_t8xsw")]
+}
+
+[sub_resource type="Animation" id="Animation_c4x6t"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_bdn67"), ExtResource("18_gk1qd"), ExtResource("19_hpmh4")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qk8d"]
 _data = {
 &"RESET": SubResource("Animation_tigbg"),
 &"back": SubResource("Animation_6myaw"),
-&"forward": SubResource("Animation_lj4gy")
+&"forward": SubResource("Animation_lj4gy"),
+&"idle": SubResource("Animation_c4x6t")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D"]
@@ -85,4 +106,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mqtl0")
 libraries = {
 &"": SubResource("AnimationLibrary_1qk8d")
 }
+autoplay = "idle"
 speed_scale = 2.0

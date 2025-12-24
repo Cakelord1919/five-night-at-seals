@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tgw7ajvfcoyv"]
+[gd_scene load_steps=15 format=3 uid="uid://tgw7ajvfcoyv"]
 
 [ext_resource type="Texture2D" uid="uid://diqacbgbwhjv8" path="res://Res/icon.svg" id="1_n0ddm"]
 [ext_resource type="Script" uid="uid://de1ja24qwsuwn" path="res://Script/script_director.gd" id="2_dc0yv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4u57eo1c00vb" path="res://SubScenes/right_door_mesh_3d.tscn" id="4_0myca"]
 [ext_resource type="PackedScene" uid="uid://dp581h6dd6mgl" path="res://SubScenes/transition_animation_ui.tscn" id="4_mo76n"]
 [ext_resource type="PackedScene" uid="uid://ded8n66u2cy3k" path="res://SubScenes/left_door_mesh_3d.tscn" id="5_1ad7k"]
+[ext_resource type="Script" uid="uid://7cyy4cd1wnqa" path="res://Script/enemy_ai.gd" id="5_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cdlfwhbihaocp" path="res://SubScenes/doors_btn_left.tscn" id="6_ciqqw"]
 [ext_resource type="PackedScene" uid="uid://ctxtj223xy3tv" path="res://SubScenes/doors_btn_right.tscn" id="7_coa4x"]
 [ext_resource type="PackedScene" uid="uid://mb56hyfsy00n" path="res://SubScenes/right_hall_mesh_3d.tscn" id="8_7ycvg"]
@@ -89,6 +90,12 @@ visible = false
 
 [node name="TransitionAnimationUI" parent="Control" instance=ExtResource("4_mo76n")]
 
+[node name="EnemyAI" type="Node2D" parent="Control"]
+script = ExtResource("5_42l1d")
+
+[node name="TimerForRNG" type="Timer" parent="Control/EnemyAI"]
+wait_time = 5.0
+
 [node name="MeshInstance3D" parent="." instance=ExtResource("3_h8xch")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
 
@@ -121,6 +128,7 @@ transform = Transform3D(-0.0122784, -0.00876212, -0.199517, 0.00209321, 0.269837
 [connection signal="button_up" from="Control/btnRight" to="Control/scriptDirector" method="OnBtnRightRelease"]
 [connection signal="button_down" from="Control/checkComBtn" to="Control/scriptDirector" method="OnCheckComPressed"]
 [connection signal="animation_finished" from="Control/TransitionAnimationUI/AnimationPlayer" to="Control/scriptDirector" method="AnimationUIFin"]
+[connection signal="timeout" from="Control/EnemyAI/TimerForRNG" to="Control/EnemyAI" method="OnTimer5s"]
 [connection signal="animation_finished" from="MeshInstance3D/AnimationPlayer" to="Control/scriptDirector" method="ComAnimFin"]
 [connection signal="animation_finished" from="RightDoorMesh3D/AnimationPlayer" to="Control/scriptDirector" method="DoorRightAnimFin"]
 [connection signal="animation_finished" from="LeftDoorMesh3D/AnimationPlayer" to="Control/scriptDirector" method="DoorLeftAnimFin"]
