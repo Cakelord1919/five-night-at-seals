@@ -67,44 +67,12 @@ const ROLL_SIZE_DEFAULT = 15.0
 
 var gsCamera2DName: StringName = CAM_3
 var gbAnimFin: bool = false
-'''
-var sealPos: Array = ["S", # Stage
-						"", # Washroom
-						"", # Bathroom
-						"", # Backroom
-						"", # Hallway
-						"", # Office
-						]
+var gsCamView: String = ""
 
-var cocoPos: Array = ["C", # Stage
-						"", # Office1
-						"", # Office2
-						"", # Office3
-						"", # Office4
-						]
-
-var rabbitPos: Array = ["R", # Stage
-						"", # Kitchen
-						"", # Washroom
-						"", # Backroom
-						"", # Office
-						]
-
-var starfishPos: Array = ["F", # Stage
-						"", # Kitchen
-						"", # Washroom
-						"", # Backroom
-						"", # Hallway
-						]
-'''
 func _ready():
 	# Signalss received from enemy_ai.gd
 	# emitted when RNG confirm one AI's action
-	ogEnemyAI.seal_move.connect(OnSealMoveSigRecv)
-	ogEnemyAI.coconut_move.connect(OnCocoMoveSigRecv)
-	ogEnemyAI.rabbit_move.connect(OnRabbitMoveSigRecv)
-	ogEnemyAI.starfish_move.connect(OnFishMoveSigRecv)
-	ogEnemyAI.endoskeleton_move.connect(OnEndoMoveSigRecv)
+	ogEnemyAI.has_movement.connect(OnMovementSigRecv)
 	return
 
 func pauseShader(bRollStat: bool):
@@ -161,36 +129,212 @@ func enableAllCamBtns():
 	ogCam8Btn.grab_focus()
 	return
 
+func checkCamera(currentCamLocation: String):
+	match currentCamLocation:
+		"stage":
+			if global_def.sealStatus["location"] == "stage":
+				if global_def.coconutStatus["location"] == "stage":
+					if global_def.rabbitStatus["location"] == "stage":
+						if global_def.starfishStatus["location"] == "stage":
+							gsCamView = "stageSCRF"
+						else:
+							gsCamView = "stageSCR"
+					else:
+						if global_def.starfishStatus["location"] == "stage":
+							gsCamView = "stageSCF"
+						else:
+							gsCamView = "stageSC"
+				else:
+					if global_def.rabbitStatus["location"] == "stage":
+						if global_def.starfishStatus["location"] == "stage":
+							gsCamView = "stageSRF"
+						else:
+							gsCamView = "stageSR"
+					else:
+						if global_def.starfishStatus["location"] == "stage":
+							gsCamView = "stageSF"
+						else:
+							gsCamView = "stageS"
+			else:
+				if global_def.coconutStatus["location"] == "stage":
+					if global_def.rabbitStatus["location"] == "stage":
+						if global_def.starfishStatus["location"] == "stage":
+							gsCamView = "stageCRF"
+						else:
+							gsCamView = "stageCR"
+					else:
+						if global_def.starfishStatus["location"] == "stage":
+							gsCamView = "stageCF"
+						else:
+							gsCamView = "stageC"
+				else:
+					if global_def.rabbitStatus["location"] == "stage":
+						if global_def.starfishStatus["location"] == "stage":
+							gsCamView = "stageRF"
+						else:
+							gsCamView = "stageR"
+					else:
+						if global_def.starfishStatus["location"] == "stage":
+							gsCamView = "stageF"
+						else:
+							gsCamView = "stage"
+		"washroom":
+			if global_def.rabbitStatus["location"] == "washroom":
+				if global_def.endoskeletonStatus["location"] == "washroom":
+					if global_def.starfishStatus["location"] == "washroom":
+						gsCamView = "washroomREF"
+					else:
+						gsCamView = "washroomRE"
+				else:
+					if global_def.starfishStatus["location"] == "washroom":
+						gsCamView = "washroomRF"
+					else:
+						gsCamView = "washroomR"
+			else:
+				if global_def.endoskeletonStatus["location"] == "washroom":
+					if global_def.starfishStatus["location"] == "washroom":
+						gsCamView = "washroomEF"
+					else:
+						gsCamView = "washroomE"
+				else:
+					if global_def.starfishStatus["location"] == "washroom":
+						gsCamView = "washroomF"
+					else:
+						gsCamView = "washroom"
+		"backroom":
+			if global_def.sealStatus["location"] == "backroom":
+				if global_def.endoskeletonStatus["location"] == "backroom":
+					if global_def.starfishStatus["location"] == "backroom":
+						gsCamView = "backroomSEF"
+					else:
+						gsCamView = "backroomSE"
+				else:
+					if global_def.starfishStatus["location"] == "backroom":
+						gsCamView = "backroomSF"
+					else:
+						gsCamView = "backroomS"
+			else:
+				if global_def.endoskeletonStatus["location"] == "backroom":
+					if global_def.starfishStatus["location"] == "backroom":
+						gsCamView = "backroomEF"
+					else:
+						gsCamView = "backroomE"
+				else:
+					if global_def.starfishStatus["location"] == "backroom":
+						gsCamView = "backroomF"
+					else:
+						gsCamView = "backroom"
+		"kitchen":
+			if global_def.rabbitStatus["location"] == "kitchen":
+				if global_def.sealStatus["location"] == "kitchen":
+					if global_def.starfishStatus["location"] == "kitchen":
+						gsCamView = "kitchenRSF"
+					else:
+						gsCamView = "kitchenRS"
+				else:
+					if global_def.starfishStatus["location"] == "kitchen":
+						gsCamView = "kitchenRF"
+					else:
+						gsCamView = "kitchenR"
+			else:
+				if global_def.sealStatus["location"] == "kitchen":
+					if global_def.starfishStatus["location"] == "kitchen":
+						gsCamView = "kitchenSF"
+					else:
+						gsCamView = "kitchenS"
+				else:
+					if global_def.starfishStatus["location"] == "kitchen":
+						gsCamView = "kitchenF"
+					else:
+						gsCamView = "kitchen"
+		"office":
+			if global_def.coconutStatus["location"] == "office":
+				if global_def.rabbitStatus["location"] == "office":
+					match global_def.coconutStatus["phase"]:
+						0:
+							gsCamView = "officeRC"
+						1:
+							gsCamView = "officeRC1"
+						2:
+							gsCamView = "officeRC2"
+						3:
+							gsCamView = "officeRC3"
+				else:
+					match global_def.coconutStatus["phase"]:
+						0:
+							gsCamView = "officeC"
+						1:
+							gsCamView = "officeC1"
+						2:
+							gsCamView = "officeC2"
+						3:
+							gsCamView = "officeC3"
+			else:
+				if global_def.rabbitStatus["location"] == "office":
+					gsCamView = "officeR"
+				else:
+					gsCamView = "office"
+		"hallway":
+			if global_def.sealStatus["location"] == "hallway":
+				if global_def.starfishStatus["location"] == "hallway":
+					gsCamView = "hallwaySF"
+				else:
+					gsCamView = "hallwayS"
+			else:
+				if global_def.starfishStatus["location"] == "hallway":
+					gsCamView = "hallwayF"
+				else:
+					gsCamView = "hallway"
+		"vent":
+			if global_def.endoskeletonStatus["location"] == "vent":
+				gsCamView = "ventE"
+			else:
+				gsCamView = "vent"
+		"storage":
+			if global_def.ukleleStatus["location"] == "storage":
+				gsCamView = "storageU"
+			else:
+				gsCamView = "storage"
+		_:
+			return
+
 func switchToStage():
-	ogCameraView2D.play("stage")
+	checkCamera("stage")
+	ogCameraView2D.play(gsCamView)
 	#ogCameraView2D.play("stage"+enemyFactors[0])
 	return
 
 func switchToWashroom():
-	ogCameraView2D.play("washroom")
+	checkCamera("washroom")
+	ogCameraView2D.play(gsCamView)
 	#ogCameraView2D.play("washroom"+enemyFactors[1])
 	return
 
 func switchToBackroom():
-	ogCameraView2D.play("backroom")
+	checkCamera("backroom")
+	ogCameraView2D.play(gsCamView)
 	#ogCameraView2D.play("backroom"+enemyFactors[2])
 	return
 
 func switchToKitchen():
-	ogCameraView2D.play("kitchen")
+	checkCamera("kitchen")
+	ogCameraView2D.play(gsCamView)
 	#ogCameraView2D.play("kitchen"+enemyFactors[3])
 	return
 
 func switchToOffice():
-	ogCameraView2D.play("office")
+	checkCamera("office")
+	ogCameraView2D.play(gsCamView)
 	return
 
 func switchToHallway():
-	ogCameraView2D.play("hallway")
+	checkCamera("hallway")
+	ogCameraView2D.play(gsCamView)
 	return
 
 func switchToVent():
-	ogCameraView2D.play("vent")
+	checkCamera("vent")
+	ogCameraView2D.play(gsCamView)
 	return
 
 func processingCamera2D():
@@ -318,22 +462,8 @@ func OnLoadingAnimFin(anim: StringName):
 		pauseShader(true)
 	return
 
-func OnSealMoveSigRecv():
-	print("Seal move")
-	return
-
-func OnCocoMoveSigRecv():
-	print("Coconut move")
-	return
-
-func OnFishMoveSigRecv():
-	print("Starfish move")
-	return
-
-func OnRabbitMoveSigRecv():
-	print("Rabbit move")
-	return
-
-func OnEndoMoveSigRecv():
-	print("Endoskeleton move")
+func OnMovementSigRecv():
+	print("movement detected")
+	# Start a timer while disable camera
+	# When this timer is stopped, enable the camera.
 	return

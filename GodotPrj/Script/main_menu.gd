@@ -29,14 +29,16 @@ func OnExitHovered():
 
 func OnGameStartPressed():
 	gbSwitchingScene = true
-	SceneMan.switchScene("res://main_scene.tscn")
+	global_def.switchScene("res://main_scene.tscn")
+	# Okay so the first night isn't usually that bad
+	# in any of these games so I'll play through...
+	# <insert screaming here>
+	global_def.initEnemyByNights(1)
 	return
 
 func _process(delta: float):
 	if gbSwitchingScene:
 		return
-	var fRandomHIColor = randf_range(0.8, 1.0)
-	var fRandomLOWColor = randf_range(0.55, 0.65)
 	var cRNG = randi_range(0, 100)
 	if gbIsHIColor:
 		if cRNG > 50:

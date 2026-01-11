@@ -17,7 +17,7 @@ config/icon="res://Res/icon.svg"
 
 [autoload]
 
-SceneMan="*res://Script/scene_man.gd"
+global_def="*res://Script/global_def.gd"
 
 [display]
 
