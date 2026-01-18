@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://br7k5dtujv5sq"]
+[gd_scene load_steps=38 format=3 uid="uid://br7k5dtujv5sq"]
 
 [ext_resource type="Texture2D" uid="uid://crv6bws1ugjc5" path="res://Texture/CamView/StageRoomInitial_downscaled_2x.png" id="1_gihwh"]
 [ext_resource type="Texture2D" uid="uid://cd001qv75xsve" path="res://Texture/CamView/WashRoom.png" id="2_pockd"]
@@ -7,7 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://cvys4utdt5rdm" path="res://Texture/CamView/OfficeRoomInitial-Ver2-2025-6-29_downscaled_2x.png" id="5_fiay8"]
 [ext_resource type="Shader" uid="uid://dg1qsb7hw0vdk" path="res://Shader/panorama.gdshader" id="5_qd11y"]
 [ext_resource type="Texture2D" uid="uid://b27ml7arldd6f" path="res://Texture/CamView/vent/VentLightOn-Ver1-2025-7-19_downscaled_2x.png" id="6_fiay8"]
+[ext_resource type="Texture2D" uid="uid://h2xtxb6p3jjr" path="res://Texture/CamView/stage/StageRoomInitial_S.png" id="6_ocbwt"]
 [ext_resource type="Texture2D" uid="uid://dqpe4ssybdhhe" path="res://Texture/CamView/righthall/righthall-placeholder.png" id="7_oj8gw"]
+[ext_resource type="Texture2D" uid="uid://cd4f65ibdhyvm" path="res://Texture/CamView/no_signal_placeholder.png" id="8_k8avt"]
+[ext_resource type="Texture2D" uid="uid://b016ag841blay" path="res://Texture/CamView/stage/StageRoomWMonsters_SRCF.png" id="10_n0yjg"]
+[ext_resource type="Texture2D" uid="uid://bd25uj44u2ejo" path="res://Texture/CamView/stage/StageRoomWMonsters_SRC.png" id="11_jvl40"]
+[ext_resource type="Texture2D" uid="uid://lf57ab0p5sfs" path="res://Texture/CamView/stage/StageRoomInitial_SFC.png" id="12_jvl40"]
+[ext_resource type="Texture2D" uid="uid://y5ayt6hm1vb3" path="res://Texture/CamView/stage/StageRoomInitial_SC.png" id="13_i162p"]
+[ext_resource type="Texture2D" uid="uid://fnhqepa8q71h" path="res://Texture/CamView/stage/StageRoomInitial_SRF.png" id="14_qesxn"]
+[ext_resource type="Texture2D" uid="uid://ca2acbxhdyyhc" path="res://Texture/CamView/stage/StageRoomWMonsters_SR.png" id="15_o4tru"]
+[ext_resource type="Texture2D" uid="uid://c7ayil306oiwu" path="res://Texture/CamView/stage/StageRoomInitial_SF.png" id="16_gdfbk"]
 
 [sub_resource type="Animation" id="Animation_oi1ss"]
 length = 0.001
@@ -363,7 +372,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_gihwh")]
+"values": [ExtResource("6_ocbwt")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -472,15 +481,489 @@ tracks/3/keys = {
 "values": [Vector2(0.265, 0.265)]
 }
 
+[sub_resource type="Animation" id="Animation_n0yjg"]
+resource_name = "no_signal"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_k8avt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(258, 278)]
+}
+
+[sub_resource type="Animation" id="Animation_i162p"]
+resource_name = "stageSCRF"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_n0yjg")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_qesxn"]
+resource_name = "stageSCR"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_jvl40")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_o4tru"]
+resource_name = "stageSCF"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_jvl40")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_gdfbk"]
+resource_name = "stageSC"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_i162p")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_1lx0u"]
+resource_name = "stageSRF"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_qesxn")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_h6tvt"]
+resource_name = "stageSR"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_o4tru")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_862rf"]
+resource_name = "stageSF"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_gdfbk")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
+[sub_resource type="Animation" id="Animation_qnyar"]
+resource_name = "stageCRF"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(258, 278), Vector2(491, 278), Vector2(491, 278), Vector2(258, 278)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_gdfbk")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.265, 0.265)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_06vsj"]
 _data = {
 &"RESET": SubResource("Animation_oi1ss"),
 &"backroom": SubResource("Animation_uieis"),
 &"hallway": SubResource("Animation_h36uc"),
 &"kitchen": SubResource("Animation_oj8gw"),
+&"no_signal": SubResource("Animation_n0yjg"),
 &"office": SubResource("Animation_k8avt"),
 &"stage": SubResource("Animation_07k7h"),
+&"stageCRF": SubResource("Animation_qnyar"),
 &"stageS": SubResource("Animation_qd11y"),
+&"stageSC": SubResource("Animation_gdfbk"),
+&"stageSCF": SubResource("Animation_o4tru"),
+&"stageSCR": SubResource("Animation_qesxn"),
+&"stageSCRF": SubResource("Animation_i162p"),
+&"stageSF": SubResource("Animation_862rf"),
+&"stageSR": SubResource("Animation_h6tvt"),
+&"stageSRF": SubResource("Animation_1lx0u"),
 &"vent": SubResource("Animation_ocbwt"),
 &"washroom": SubResource("Animation_06vsj")
 }

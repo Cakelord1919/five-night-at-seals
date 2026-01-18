@@ -52,6 +52,9 @@ extends Node2D
 
 @onready var ogEnemyAI: Node2D = $"../EnemyAI"
 
+@onready var ogBlackOutTimer: Timer = $Timer
+
+
 const CAM_1: StringName = "kitchen"
 const CAM_2: StringName = "office"
 const CAM_3: StringName = "stage"
@@ -68,6 +71,10 @@ const ROLL_SIZE_DEFAULT = 15.0
 var gsCamera2DName: StringName = CAM_3
 var gbAnimFin: bool = false
 var gsCamView: String = ""
+var gbHasMovement: bool = false
+var gbIsLoading: bool = false
+var gsCurrentViewLocation: String = ""
+
 
 func _ready():
 	# Signalss received from enemy_ai.gd
@@ -299,42 +306,68 @@ func checkCamera(currentCamLocation: String):
 			return
 
 func switchToStage():
-	checkCamera("stage")
-	ogCameraView2D.play(gsCamView)
+	gsCurrentViewLocation = "stage"
+	if gbHasMovement == false:
+		checkCamera("stage")
+		ogCameraView2D.play(gsCamView)
+	else:
+		ogCameraView2D.play("no_signal")
 	#ogCameraView2D.play("stage"+enemyFactors[0])
 	return
 
 func switchToWashroom():
-	checkCamera("washroom")
-	ogCameraView2D.play(gsCamView)
+	gsCurrentViewLocation = "washroom"
+	if gbHasMovement == false:
+		checkCamera("washroom")
+		ogCameraView2D.play(gsCamView)
+	else:
+		ogCameraView2D.play("no_signal")
 	#ogCameraView2D.play("washroom"+enemyFactors[1])
 	return
 
 func switchToBackroom():
-	checkCamera("backroom")
-	ogCameraView2D.play(gsCamView)
+	gsCurrentViewLocation = "backroom"
+	if gbHasMovement == false:
+		checkCamera("backroom")
+		ogCameraView2D.play(gsCamView)
+	else:
+		ogCameraView2D.play("no_signal")
 	#ogCameraView2D.play("backroom"+enemyFactors[2])
 	return
 
 func switchToKitchen():
-	checkCamera("kitchen")
-	ogCameraView2D.play(gsCamView)
+	gsCurrentViewLocation = "kitchen"
+	if gbHasMovement == false:
+		checkCamera("kitchen")
+		ogCameraView2D.play(gsCamView)
+	else:
+		ogCameraView2D.play("no_signal")
 	#ogCameraView2D.play("kitchen"+enemyFactors[3])
 	return
 
 func switchToOffice():
-	checkCamera("office")
-	ogCameraView2D.play(gsCamView)
+	gsCurrentViewLocation = "office"
+	if gbHasMovement == false:
+		checkCamera("office")
+		ogCameraView2D.play(gsCamView)
+	else:
+		ogCameraView2D.play("no_signal")
 	return
 
 func switchToHallway():
-	checkCamera("hallway")
-	ogCameraView2D.play(gsCamView)
+	gsCurrentViewLocation = "hallway"
+	if gbHasMovement == false:
+		checkCamera("hallway")
+		ogCameraView2D.play(gsCamView)
 	return
 
 func switchToVent():
-	checkCamera("vent")
-	ogCameraView2D.play(gsCamView)
+	gsCurrentViewLocation = "vent"
+	if gbHasMovement == false:
+		checkCamera("vent")
+		ogCameraView2D.play(gsCamView)
+	else:
+		ogCameraView2D.play("no_signal")
 	return
 
 func processingCamera2D():
@@ -367,6 +400,7 @@ func OnCam1BtnPressed():
 	hideAllCamSelected()
 	ogCam1Selected.visible = true
 	if gsCamera2DName != CAM_1:
+		gbIsLoading = true
 		gsCamera2DName = CAM_1
 		ogLoadingAnim.visible = true
 		ogLoadingAnimPlayer.play("spin")
@@ -379,6 +413,7 @@ func OnCam2BtnPressed():
 	hideAllCamSelected()
 	ogCam2Selected.visible = true
 	if gsCamera2DName != CAM_2:
+		gbIsLoading = true
 		gsCamera2DName = CAM_2
 		ogLoadingAnim.visible = true
 		ogLoadingAnimPlayer.play("spin")
@@ -391,6 +426,7 @@ func OnCam3BtnPressed():
 	hideAllCamSelected()
 	ogCam3Selected.visible = true
 	if gsCamera2DName != CAM_3:
+		gbIsLoading = true
 		gsCamera2DName = CAM_3
 		ogLoadingAnim.visible = true
 		ogLoadingAnimPlayer.play("spin")
@@ -408,6 +444,7 @@ func OnCam5BtnPressed():
 	hideAllCamSelected()
 	ogCam5Selected.visible = true
 	if gsCamera2DName != CAM_5:
+		gbIsLoading = true
 		gsCamera2DName = CAM_5
 		ogLoadingAnim.visible = true
 		ogLoadingAnimPlayer.play("spin")
@@ -420,6 +457,7 @@ func OnCam6BtnPressed():
 	hideAllCamSelected()
 	ogCam6Selected.visible = true
 	if gsCamera2DName != CAM_6:
+		gbIsLoading = true
 		gsCamera2DName = CAM_6
 		ogLoadingAnim.visible = true
 		ogLoadingAnimPlayer.play("spin")
@@ -432,6 +470,7 @@ func OnCam7BtnPressed():
 	hideAllCamSelected()
 	ogCam7Selected.visible = true
 	if gsCamera2DName != CAM_7:
+		gbIsLoading = true
 		gsCamera2DName = CAM_7
 		ogLoadingAnim.visible = true
 		ogLoadingAnimPlayer.play("spin")
@@ -444,6 +483,7 @@ func OnCam8BtnPressed():
 	hideAllCamSelected()
 	ogCam8Selected.visible = true
 	if gsCamera2DName != CAM_8:
+		gbIsLoading = true
 		gsCamera2DName = CAM_8
 		ogLoadingAnim.visible = true
 		ogLoadingAnimPlayer.play("spin")
@@ -454,6 +494,7 @@ func OnCam8BtnPressed():
 
 func OnLoadingAnimFin(anim: StringName):
 	if anim == "spin":
+		gbIsLoading = false
 		enableAllCamBtns()
 		ogLoadingAnim.visible = false
 		processingCamera2D()
@@ -464,6 +505,20 @@ func OnLoadingAnimFin(anim: StringName):
 
 func OnMovementSigRecv():
 	print("movement detected")
+	gbHasMovement = true
+	# If the spin animation is not active
+	if gbIsLoading == false:
+		# Disables the camera live feed instantly
+		ogCameraView2D.play("no_signal")
 	# Start a timer while disable camera
+	ogBlackOutTimer.start()
+	return
+
+func OnBlackOutTimerTimesOut():
 	# When this timer is stopped, enable the camera.
+	ogBlackOutTimer.stop()
+	gbHasMovement = false
+	# Resume the current camera live feed
+	checkCamera(gsCurrentViewLocation)
+	ogCameraView2D.play(gsCamView)
 	return
