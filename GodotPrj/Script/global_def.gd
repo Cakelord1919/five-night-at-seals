@@ -46,6 +46,7 @@ var _loading_screen_scene = preload("res://loading_screen.tscn")
 # it take to activate the uklele. Just like the puppet's music
 # box from FNAF 2.
 var sealStatus = {
+	"id": "seal",
 	"location":"stage",
 	"jumpscare":false,
 	"isBlocked":false,
@@ -67,6 +68,7 @@ enum geSealPosition {
 }
 
 var rabbitStatus = {
+	"id": "rabbit",
 	"location":"stage",
 	"jumpscare":false,
 	"isBlocked":false,
@@ -87,6 +89,7 @@ enum geRabbitPosition {
 }
 
 var starfishStatus = {
+	"id": "starfish",
 	"location":"outside",
 	"jumpscare":false,
 	"isBlocked":false,
@@ -108,6 +111,7 @@ enum geStarfishPosition {
 }
 
 var coconutStatus = {
+	"id": "coco",
 	"location":"stage",
 	"jumpscare":false,
 	"isBlocked":false,
@@ -126,6 +130,7 @@ enum geCoconutPosition {
 }
 
 var endoskeletonStatus = {
+	"id": "endo",
 	"location":"outside",
 	"jumpscare":false,
 	"isBlocked":false,
@@ -146,6 +151,7 @@ enum geEndoSkeletonPosition {
 }
 
 var ukleleStatus = {
+	"id": "ukulele",
 	"location":"storage",
 	"jumpscare":false,
 	"blocked":false,
@@ -189,18 +195,18 @@ func initEnemyByNights(currentNight:int=1):
 	match currentNight:
 		1:
 			# Set if an enemy is active
-			sealStatus["isActive"] = false
+			sealStatus["isActive"] = true
 			rabbitStatus["isActive"] = true
-			starfishStatus["isActive"] = false
+			starfishStatus["isActive"] = true
 			coconutStatus["isActive"] = true
-			endoskeletonStatus["isActive"] = false
+			endoskeletonStatus["isActive"] = true
 			ukleleStatus["isActive"] = true
 			# Set their AI level
-			sealStatus["aiLevel"] = 0
-			rabbitStatus["aiLevel"] = 10
-			starfishStatus["aiLevel"] = 0
-			coconutStatus["aiLevel"] = 5
-			endoskeletonStatus["aiLevel"] = 0
+			sealStatus["aiLevel"] = 20
+			rabbitStatus["aiLevel"] = 20
+			starfishStatus["aiLevel"] = 20
+			coconutStatus["aiLevel"] = 20
+			endoskeletonStatus["aiLevel"] = 20
 			ukleleStatus["aiLevel"] = 0
 			# Set their special abilities
 			starfishStatus["appearanceDurationTime"] = 0
@@ -354,3 +360,7 @@ func _process(_delta):
 		if _loading_screen_instance:
 			_loading_screen_instance.queue_free()
 			_loading_screen_instance = null
+
+func _ready() -> void:
+	initEnemyByNights(1)
+	return

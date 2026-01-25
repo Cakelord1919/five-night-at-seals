@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hrj6650ij4nb"
-path="res://.godot/imported/KitchenRoomInitial_RF.png-513588fb32e369d45651ff33ac2e888e.ctex"
+path.bptc="res://.godot/imported/KitchenRoomInitial_RF.png-513588fb32e369d45651ff33ac2e888e.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/CamView/kitchen/KitchenRoomInitial_RF.png"
-dest_files=["res://.godot/imported/KitchenRoomInitial_RF.png-513588fb32e369d45651ff33ac2e888e.ctex"]
+dest_files=["res://.godot/imported/KitchenRoomInitial_RF.png-513588fb32e369d45651ff33ac2e888e.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

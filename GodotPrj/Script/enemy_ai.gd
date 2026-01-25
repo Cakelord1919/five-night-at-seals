@@ -2,12 +2,6 @@ extends Node2D
 
 @onready var ogTimerForRNG: Timer = $TimerForRNG
 
-const AI_LVL_S = 5 #Seal
-const AI_LVL_E = 20 # Exo-skeleton
-const AI_LVL_C = 20 # Coconut
-const AI_LVL_R = 20 # Rabbit
-const AI_LVL_F = 20 # Starfish
-
 var gcSealCurrentPosition: int = 0
 var gcEndoSkeletonCurrentPosition: int = 0
 var gcCoconutCurrentPosition: int = 0
@@ -26,26 +20,31 @@ func OnTimer5s():
 	and global_def.sealStatus["jumpscare"] == false \
 	and global_def.sealStatus["beingWatched"] == false:
 		var cActionFactorS = randi_range(0, 100)
+		print(global_def.sealStatus)
 		if cActionFactorS < global_def.sealStatus["aiLevel"]:
 			sealMove()
 	
 	if global_def.coconutStatus["isActive"] and global_def.coconutStatus["phase"] < 3:
 		var cActionFactorC = randi_range(0, 100)
+		print(global_def.coconutStatus)
 		if cActionFactorC < global_def.coconutStatus["aiLevel"]:
 			cocoMove()
 	
 	if global_def.starfishStatus["isActive"] and global_def.starfishStatus["jumpscare"] == false:
 		var cActionFactorF = randi_range(0, 100)
+		print(global_def.starfishStatus)
 		if cActionFactorF < global_def.starfishStatus["aiLevel"]:
 			fishMove()
 
 	if global_def.rabbitStatus["isActive"] and global_def.rabbitStatus["jumpscare"] == false:
 		var cActionFactorR = randi_range(0, 100)
+		print(global_def.rabbitStatus)
 		if cActionFactorR < global_def.rabbitStatus["aiLevel"]:
 			rabbitMove()
 
 	if global_def.endoskeletonStatus["isActive"] and global_def.endoskeletonStatus["jumpscare"] == false:
 		var cActionFactorE = randi_range(0, 100)
+		print(global_def.endoskeletonStatus)
 		if cActionFactorE < global_def.endoskeletonStatus["aiLevel"]:
 			endoMove()
 
@@ -53,7 +52,7 @@ func OnTimer5s():
 	return
 
 func sealMove():
-	#print("Seal move")
+	print("Seal move")
 	if (gcSealCurrentPosition < global_def.geSealPosition.RIGHT_DOOR):
 		# Otherwise, it'll stay at its current location
 		gcSealCurrentPosition += 1
@@ -69,7 +68,7 @@ func sealMove():
 	return
 
 func cocoMove():
-	#print("Coconut move")
+	print("Coconut move")
 	if (gcCoconutCurrentPosition == global_def.geCoconutPosition.OFFICE):
 		global_def.coconutStatus["location"] = global_def.coconutStatus["trail"][global_def.geCoconutPosition.OFFICE]
 		if global_def.coconutStatus["phase"] < 3:
@@ -83,14 +82,14 @@ func cocoMove():
 	return
 
 func fishMove():
-	#print("Starfish move")
+	print("Starfish move")
 	var cFishLocation = randi_range(0, global_def.geStarfishPosition.MAXMIUM)
 	global_def.starfishStatus["location"] = global_def.starfishStatus["trail"][cFishLocation]
 	emit_signal("has_movement")
 	return
 
 func endoMove():
-	#print("Endoskeleton move")
+	print("Endoskeleton move")
 	if (gcEndoSkeletonCurrentPosition < global_def.geSealPosition.MAXMIUM):
 		if (global_def.endoskeletonStatus["isBlocked"] == false):
 			gcEndoSkeletonCurrentPosition += 1
@@ -101,11 +100,11 @@ func endoMove():
 	return
 	
 func rabbitMove():
-	#print("Rabbit move")
+	print("Rabbit move")
 	# If rabbit is at stage, choose 3 random place to go.
 	# They are: kitchen, washroom, office
 	if (gcRabbitCurrentPosition == global_def.geRabbitPosition.STAGE):
-		gcRabbitCurrentPosition = randi_range(global_def.geRabbitPosition.WASHROOM, global_def.geRabbitPosition.OFFICE+1)
+		gcRabbitCurrentPosition = randi_range(global_def.geRabbitPosition.WASHROOM, global_def.geRabbitPosition.OFFICE)
 	# If rabbit is at office, then it will directly go to left door
 	elif (gcRabbitCurrentPosition == global_def.geRabbitPosition.OFFICE):
 		gcRabbitCurrentPosition = global_def.geRabbitPosition.LEFT_DOOR
@@ -118,7 +117,7 @@ func rabbitMove():
 	# If rabbit is at other places, it will choose 3 random places to go
 	# They are: stage, washroom, kitchen
 	else:
-		gcRabbitCurrentPosition = randi_range(global_def.geRabbitPosition.STAGE, global_def.geRabbitPosition.KITCHEN+1)
+		gcRabbitCurrentPosition = randi_range(global_def.geRabbitPosition.STAGE, global_def.geRabbitPosition.KITCHEN)
 	global_def.rabbitStatus["location"] = global_def.rabbitStatus["trail"][gcRabbitCurrentPosition]
 	if global_def.rabbitStatus["location"] == "jumpscare":
 		global_def.rabbitStatus["jumpscare"] = true

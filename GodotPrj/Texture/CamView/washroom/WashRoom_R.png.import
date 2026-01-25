@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc6esj7ko52ps"
-path="res://.godot/imported/WashRoom_R.png-05b762463c4bd56450af673b7b26ba20.ctex"
+path.bptc="res://.godot/imported/WashRoom_R.png-05b762463c4bd56450af673b7b26ba20.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/CamView/washroom/WashRoom_R.png"
-dest_files=["res://.godot/imported/WashRoom_R.png-05b762463c4bd56450af673b7b26ba20.ctex"]
+dest_files=["res://.godot/imported/WashRoom_R.png-05b762463c4bd56450af673b7b26ba20.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

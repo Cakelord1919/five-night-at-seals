@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhmvme3e5ccit"
-path="res://.godot/imported/righthall-placeholder_S.png-d42e971c3a19460622fc5d2e7eb0fa8e.ctex"
+path.bptc="res://.godot/imported/righthall-placeholder_S.png-d42e971c3a19460622fc5d2e7eb0fa8e.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/CamView/righthall/righthall-placeholder_S.png"
-dest_files=["res://.godot/imported/righthall-placeholder_S.png-d42e971c3a19460622fc5d2e7eb0fa8e.ctex"]
+dest_files=["res://.godot/imported/righthall-placeholder_S.png-d42e971c3a19460622fc5d2e7eb0fa8e.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
